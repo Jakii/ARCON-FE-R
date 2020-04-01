@@ -9,11 +9,13 @@ import {
   IonTabButton,
   IonTabs
 } from '@ionic/react';
+
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { star, home, settings } from 'ionicons/icons';
+import Home from './pages/Home';
+import Goals from './pages/Goals';
+import Kids from './pages/Kids';
+import Profile from './pages/Profile';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -39,23 +41,29 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/home" component={Home} exact={true} />
+          <Route path="/goals" component={Goals} exact={true} />
+          <Route path="/kids" component={Kids} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
         </IonRouterOutlet>
+        
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
+          <IonTabButton tab="home" href="/home" >
+            <IonIcon icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
+          <IonTabButton tab="goals" href="/goals">
+            <IonIcon icon={star} />
             <IonLabel>Goals</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
+          <IonTabButton tab="kids" href="/kids">
+            <IonIcon icon={star} />
             <IonLabel>Kids</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="profile" href="/profile">
+            <IonIcon icon={settings} />
+            <IonLabel>Profile</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

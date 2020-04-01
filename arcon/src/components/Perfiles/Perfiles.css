@@ -1,0 +1,14 @@
+.ProfileStyle{
+    background: #6ccff6;
+    width:140px;
+    height: 140px;
+    font-size: 18px;
+    margin-left: 9%;
+    margin-top: 5%;
+}
+
+.AddStyle{
+    width:140px;
+    height: 140px;
+    font-size: 18px;
+}
