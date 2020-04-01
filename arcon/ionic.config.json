@@ -1,0 +1,7 @@
+{
+  "name": "Arcón",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
