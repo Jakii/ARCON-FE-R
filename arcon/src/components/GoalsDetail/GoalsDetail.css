@@ -1,0 +1,15 @@
+.title{
+    color: white; 
+    font-size: 30px;
+}
+
+.bar{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10%;
+}
+
+.progress{
+    color: #f2efea;
+    font-size: 44px;
+}

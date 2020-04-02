@@ -1,9 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Goals.css';
+import GoalsList from './../components/GoalsList/GoalsList';
+
 
 const Goals: React.FC = () => {
+
+  const [showDetailComponent, setShowDetailComponent] = useState(false);
+
+  const goalsList = [
+    {
+      GoalId: 1,
+      Title: "Mac",
+      Description:"",
+      Amount:0,
+      Progress:0,
+      StatusId:1
+    },
+    {
+      GoalId: 2,
+      Title: "Viaje",
+      Description:"",
+      Amount:0,
+      Progress:0,
+      StatusId:1
+    }
+  ];
+
+  const goToDetail=()=>{
+
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -17,7 +44,8 @@ const Goals: React.FC = () => {
             <IonTitle size="large">Goals</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Goals" />
+        <GoalsList 
+        List={goalsList}/>
       </IonContent>
     </IonPage>
   );

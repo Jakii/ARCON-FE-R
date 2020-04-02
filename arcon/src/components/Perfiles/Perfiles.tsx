@@ -57,18 +57,3 @@ class ProfilesList extends Component<ProfileProps> {
 }
 
 export default ProfilesList;
-
-
-
-// const Perfiles: React.FC<Props> = (ListaPerfiles) => {
-
-//   const renderProfiles=ListaPerfiles.map(x=>{
-//       return  <IonButton ion-button></IonButton>
-//   });
-
-//   return (
-//     <IonButton ion-button></IonButton>
-//   );
-// };
-
-// export default Perfiles;
