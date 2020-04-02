@@ -8,20 +8,9 @@ const Home: React.FC = () => {
 
   const ListaPerfiles = [
     {
-      Id: 1,
-      Nombre: "Gaby"
-    },
-    {
-      Id: 2,
-      Nombre: "Wendy"
-    },
-    {
-      Id: 3,
-      Nombre: "Pedro"
-    },
-    {
-      Id: 4,
-      Nombre: "Jacky"
+      ProfileId: 1,
+      Name: "Gaby",
+      RolId:1
     }
   ];
 

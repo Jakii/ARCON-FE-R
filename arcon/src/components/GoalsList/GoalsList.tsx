@@ -11,11 +11,13 @@ type GoalsProps = {
 const GoalsList: React.FC<GoalsProps> = ({List}) => {
     
     const [selectedGoal, setSelectedGoal]=useState({});
+    const [selectedActivities, setSelectedActivities]=useState([]);
     const [showModal,setShowModal]=useState(false);
 
     const goToDetail=(item:any)=>{
         setSelectedGoal(item);
         setShowModal(true);
+        setSelectedActivities(item.Activities);
     }
 
     const renderGoals = List.map(x => {
@@ -35,7 +37,8 @@ const GoalsList: React.FC<GoalsProps> = ({List}) => {
             <GoalsDetail 
             Goal={selectedGoal}
             ShowModal={showModal}
-            SetShowModal={setShowModal}/>
+            SetShowModal={setShowModal}
+            Activities={selectedActivities}/>
         </IonContent>
     )
 }

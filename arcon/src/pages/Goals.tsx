@@ -15,21 +15,37 @@ const Goals: React.FC = () => {
       Description:"",
       Amount:0,
       Progress:0,
-      StatusId:1
+      StatusId:1,
+      Activities:[
+        {
+          ActivityId:1,
+          Name: "Arreglar mi habitación"
+        },
+        {
+          ActivityId:2,
+          Name: "Sacar la basura"
+        }
+      ]
     },
     {
       GoalId: 2,
       Title: "Viaje",
       Description:"",
       Amount:0,
-      Progress:0,
-      StatusId:1
+      Progress:50,
+      StatusId:1,
+      Activities:[
+        {
+          ActivityId:1,
+          Name: "Arreglar mi habitación"
+        },
+        {
+          ActivityId:2,
+          Name: "Sacar la basura"
+        }
+      ]
     }
   ];
-
-  const goToDetail=()=>{
-
-  }
 
   return (
     <IonPage>

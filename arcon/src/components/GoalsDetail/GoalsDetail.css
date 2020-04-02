@@ -1,6 +1,15 @@
+.item{
+    display: flex;
+}
+
 .title{
-    color: white; 
+    color:#f2efea;
     font-size: 30px;
+}
+
+.subtitle{
+    color:#f2efea;
+    font-size: 18px;
 }
 
 .bar{
