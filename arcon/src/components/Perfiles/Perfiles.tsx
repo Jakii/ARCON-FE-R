@@ -1,68 +1,72 @@
 import React, { useState } from 'react';
-import { IonButton, IonIcon, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonButton, IonIcon, IonGrid, IonRow, IonCol, IonContent, IonFooter, IonList } from '@ionic/react';
 import { star, add } from 'ionicons/icons';
 import './Perfiles.css';
+import NewProfile from './NewProfile';
 
 type ProfileProps = {
     ListaPerfiles: any[]
 }
 
 const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
-    const [listaPerfiles, setListaPerfiles]=useState(ListaPerfiles);
+    const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
+    const [showNewProfile, setShowNewProfile] = useState(false);
 
-    const renderProfiles = listaPerfiles.map(x => {
+
+    const renderProfiles = () => {
         return (
-            <IonCol size-md="5" size-lg="5" size-s="5">
-                <IonButton
-                    ion-button
-                    icon-start
-                    color="secondary"
-                    expand="full"
-                >
-                    <IonIcon slot="start" icon={star} />
-                    {x.Name}
-                </IonButton>
-            </IonCol>
-        )
-    });
-
-    const addNewProfile = () => {
-        var newProfile = {
-            ProfileId: 2,
-            Name: "Jacky",
-            RolId: 2
-        };
-        listaPerfiles.push(newProfile);
-        debugger;
-        setListaPerfiles(listaPerfiles);
-    }
-
-    return (
-        <IonGrid>
-            <IonRow>
-                <IonCol size-md="12" size-lg="12" size-s="12">
-                    <div>
-                        {renderProfiles}
-                    </div>
-                </IonCol>
-            </IonRow>
-            <IonRow>
-                <IonCol size-md="12" size-lg="12" size-s="12">
-                    <div>
+            listaPerfiles.map(x => {
+                return (
+                    <IonCol size-md="5" size-lg="5" size-s="5">
                         <IonButton
                             ion-button
                             icon-start
-                            color="secondary"
+                            color={x.RolId == 1 ? "warning" : "secondary"}
                             expand="full"
-                            onClick={() => addNewProfile()}
                         >
-                            <IonIcon slot="start" icon={add} />
-                            Nuevo Perfil
+                            <IonIcon slot="start" icon={star} />
+                            {x.Name}
                         </IonButton>
-                    </div>
-                </IonCol>
-            </IonRow>
-        </IonGrid>
+                    </IonCol>
+                )
+            }))
+    }
+
+    const addNewProfile = () => {
+        setShowNewProfile(true);
+    }
+
+    const saveNewProfile = (name: any) => {
+        var newProfile = {
+            Name: name,
+            RolId: 2,
+            ProfileId: 2
+        };
+
+        ListaPerfiles.push(newProfile);
+        setListaPerfiles(ListaPerfiles);
+    }
+
+    return (
+        <IonContent>
+            <IonList>
+                {renderProfiles()}
+            </IonList>
+            <NewProfile ShowModal={showNewProfile} SetShowModal={() => { setShowNewProfile(false) }} SaveNewProfile={saveNewProfile} />
+
+            <IonFooter>
+                <IonButton
+                    ion-button
+                    icon-start
+                    color="primary"
+                    expand="full"
+                    onClick={() => addNewProfile()}
+                >
+                    <IonIcon slot="start" icon={add} />
+                    Nuevo Perfil
+                        </IonButton>
+            </IonFooter>
+        </IonContent>
     )
 }
 

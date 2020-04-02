@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonButton } from '@ionic/react';
 import './Goals.css';
 import GoalsList from './../components/GoalsList/GoalsList';
 
@@ -12,17 +12,17 @@ const Goals: React.FC = () => {
     {
       GoalId: 1,
       Title: "Mac",
-      Description:"",
-      Amount:0,
-      Progress:0,
-      StatusId:1,
-      Activities:[
+      Description: "",
+      Amount: 0,
+      Progress: 0,
+      StatusId: 1,
+      Activities: [
         {
-          ActivityId:1,
+          ActivityId: 1,
           Name: "Arreglar mi habitación"
         },
         {
-          ActivityId:2,
+          ActivityId: 2,
           Name: "Sacar la basura"
         }
       ]
@@ -30,17 +30,17 @@ const Goals: React.FC = () => {
     {
       GoalId: 2,
       Title: "Viaje",
-      Description:"",
-      Amount:0,
-      Progress:50,
-      StatusId:1,
-      Activities:[
+      Description: "",
+      Amount: 0,
+      Progress: 50,
+      StatusId: 1,
+      Activities: [
         {
-          ActivityId:1,
+          ActivityId: 1,
           Name: "Arreglar mi habitación"
         },
         {
-          ActivityId:2,
+          ActivityId: 2,
           Name: "Sacar la basura"
         }
       ]
@@ -60,9 +60,12 @@ const Goals: React.FC = () => {
             <IonTitle size="large">Goals</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <GoalsList 
-        List={goalsList}/>
+        <GoalsList
+          List={goalsList} />
       </IonContent>
+      <IonFooter>
+        <IonButton color="primary" expand="full">Nueva meta</IonButton>
+      </IonFooter>
     </IonPage>
   );
 };
