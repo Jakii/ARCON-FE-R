@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -36,39 +36,43 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/home" component={Home} exact={true} />
-          <Route path="/goals" component={Goals} exact={true} />
-          <Route path="/kids" component={Kids} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
-        </IonRouterOutlet>
-        
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home" >
-            <IonIcon icon={home} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="goals" href="/goals">
-            <IonIcon icon={star} />
-            <IonLabel>Goals</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="kids" href="/kids">
+
+const App: React.FC = () => {
+  const [user, setUser] = useState({});
+  
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/home" component={() => <Home User={user} SetUser={setUser} />} exact={true} />
+            <Route path="/goals" component={() => <Goals User={user} SetUser={setUser}  />} exact={true} />
+            <Route path="/kids" component={Kids} />
+            <Route path="/profile" component={() => <Profile User={user} SetUser={setUser} />} />
+            <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home" >
+              <IonIcon icon={home} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="goals" href="/goals">
+              <IonIcon icon={star} />
+              <IonLabel>Goals</IonLabel>
+            </IonTabButton>
+            {/* <IonTabButton tab="kids" href="/kids">
             <IonIcon icon={star} />
             <IonLabel>Kids</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={settings} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
-
+          </IonTabButton> */}
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={settings} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 export default App;

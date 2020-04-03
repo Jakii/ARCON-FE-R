@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IonButton, IonIcon, IonGrid, IonRow, IonCol, IonContent, IonFooter, IonList } from '@ionic/react';
 import { star, add } from 'ionicons/icons';
 import './Perfiles.css';
 import NewProfile from './NewProfile';
 
+
 type ProfileProps = {
-    ListaPerfiles: any[]
+    ListaPerfiles: any[],
+    User:{},
+    SetUser:Function
 }
 
-const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
+const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser}) => {
+
     const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
     const [showNewProfile, setShowNewProfile] = useState(false);
-
-
+   
     const renderProfiles = () => {
         return (
             listaPerfiles.map(x => {
@@ -23,6 +26,8 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
                             icon-start
                             color={x.RolId == 1 ? "warning" : "secondary"}
                             expand="full"
+                            onClick={() => goToHome(x)}
+                            href="/Goals"
                         >
                             <IonIcon slot="start" icon={star} />
                             {x.Name}
@@ -36,15 +41,22 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
         setShowNewProfile(true);
     }
 
+    const goToHome=(item:any)=>{
+        SetUser(item);
+        setListaPerfiles(ListaPerfiles);
+    }
+
+
     const saveNewProfile = (name: any) => {
+        const lenghtProfilesList=listaPerfiles.length;
+        const lastIndex=listaPerfiles[lenghtProfilesList-1];
         var newProfile = {
             Name: name,
             RolId: 2,
-            ProfileId: 2
+            ProfileId: lastIndex+1
         };
-
-        ListaPerfiles.push(newProfile);
-        setListaPerfiles(ListaPerfiles);
+        listaPerfiles.push(newProfile);
+        setListaPerfiles(listaPerfiles);
     }
 
     return (

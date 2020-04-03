@@ -5,10 +5,11 @@ import { arrowForward, add } from 'ionicons/icons';
 import GoalsDetail from './../GoalsDetail/GoalsDetail';
 
 type GoalsProps = {
-    List: any[]
+    List: any[],
+    User:{}
 }
 
-const GoalsList: React.FC<GoalsProps> = ({List}) => {
+const GoalsList: React.FC<GoalsProps> = ({List,User}) => {
     
     const [selectedGoal, setSelectedGoal]=useState({});
     const [selectedActivities, setSelectedActivities]=useState([]);
@@ -24,6 +25,7 @@ const GoalsList: React.FC<GoalsProps> = ({List}) => {
         return (
             <IonItem>
                 <IonLabel>{x.Title}</IonLabel>
+                <IonLabel color="warning">{x.ProfileId}</IonLabel>
                 <IonButton onClick={()=>goToDetail(x)}> <IonIcon icon={arrowForward} /></IonButton>
             </IonItem>
         )

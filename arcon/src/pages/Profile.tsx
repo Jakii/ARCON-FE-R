@@ -3,7 +3,12 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import ExploreContainer from '../components/ExploreContainer';
 import './Profile.css';
 
-const Profile: React.FC = () => {
+type ProfileProps={
+  User:{},
+  SetUser:Function
+}
+
+const Profile: React.FC<ProfileProps> = ({User, SetUser}) => {
   return (
     <IonPage>
       <IonHeader>

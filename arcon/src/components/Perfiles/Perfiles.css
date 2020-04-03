@@ -12,3 +12,7 @@
     height: 140px;
     font-size: 18px;
 }
+
+.focus{
+    background-focused:black;
+}
