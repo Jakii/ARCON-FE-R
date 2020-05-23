@@ -1,49 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFooter, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonButtons, IonIcon } from '@ionic/react';
 import './Goals.css';
 import GoalsList from './../components/GoalsList/GoalsList';
 import NewGoal from './../components/GoalsList/NewGoal';
+import { add } from 'ionicons/icons';
 
 type GoalsProps = {
   User: {},
-  SetUser:Function
+  SetUser: Function
 }
 
-const Goals: React.FC<GoalsProps> = ({ User, SetUser}) => {
+const Goals: React.FC<GoalsProps> = ({ User, SetUser }) => {
   const [showDetailComponent, setShowDetailComponent] = useState(false);
   const [showNewGoal, setShowNewGoal] = useState(false);
-  const [goals, setGoals]=useState(Array());
+  const [goals, setGoals] = useState(Array());
 
   // useEffect(()=>{
   //   saveNewGoal("Viaje","Roatan",10000,"Gaby");
   // })
 
   const goalsList = [
-    {
-      GoalId: 1,
-      ProfileId: 1,
-      Title: "Mac",
-      Description: "",
-      Amount: 0,
-      Progress: 0,
-      StatusId: 1,
-      Activities: [
-        {
-          ActivityId: 1,
-          Name: "Arreglar mi habitación"
-        },
-        {
-          ActivityId: 2,
-          Name: "Sacar la basura"
-        }
-      ]
-    },
+    // {
+    //   GoalId: 1,
+    //   ProfileId: 1,
+    //   Title: "Mac",
+    //   Description: "",
+    //   Amount: 0,
+    //   Progress: 0,
+    //   StatusId: 1,
+    //   Activities: [
+    //     {
+    //       ActivityId: 1,
+    //       Name: "Arreglar mi habitación"
+    //     },
+    //     {
+    //       ActivityId: 2,
+    //       Name: "Sacar la basura"
+    //     }
+    //   ]
+    // },
     {
       GoalId: 2,
       ProfileId: 1,
-      Title: "Viaje",
+      Profile:"Gaby",
+      Title: "Viaje a Seul",
       Description: "",
-      Amount: 0,
+      Amount: 50000,
       Progress: 50,
       StatusId: 1,
       Activities: [
@@ -57,45 +59,45 @@ const Goals: React.FC<GoalsProps> = ({ User, SetUser}) => {
         }
       ]
     },
-    {
-      GoalId: 3,
-      ProfileId: 2,
-      Title: "Nintendo switch",
-      Description: "",
-      Amount: 0,
-      Progress: 50,
-      StatusId: 1,
-      Activities: [
-        {
-          ActivityId: 1,
-          Name: "Arreglar mi habitación"
-        },
-        {
-          ActivityId: 2,
-          Name: "Sacar la basura"
-        }
-      ]
-    }
+    // {
+    //   GoalId: 3,
+    //   ProfileId: 2,
+    //   Title: "Nintendo switch",
+    //   Description: "",
+    //   Amount: 0,
+    //   Progress: 50,
+    //   StatusId: 1,
+    //   Activities: [
+    //     {
+    //       ActivityId: 1,
+    //       Name: "Arreglar mi habitación"
+    //     },
+    //     {
+    //       ActivityId: 2,
+    //       Name: "Sacar la basura"
+    //     }
+    //   ]
+    // }
   ];
 
   const addNewGoal = () => {
     setShowNewGoal(true);
   }
 
-  const saveNewGoal = (name: string, description: string, amount: number, profile:string) => {
-        var newGoal = {
-            Title: name,
-            Description: description,
-            ProfileId: profile,
-            GoalId:3,
-            Amount:amount,
-            Progress:0,
-            StatusId:1,
-            Activities:[]
-        };
+  const saveNewGoal = (name: string, description: string, amount: number, profile: string) => {
+    var newGoal = {
+      Title: name,
+      Description: description,
+      ProfileId: profile,
+      GoalId: 3,
+      Amount: amount,
+      Progress: 0,
+      StatusId: 1,
+      Activities: []
+    };
 
-        goals.push(newGoal);
-        setGoals(goals);
+    goals.push(newGoal);
+    setGoals(goals);
   }
 
   return (
@@ -105,27 +107,25 @@ const Goals: React.FC<GoalsProps> = ({ User, SetUser}) => {
           <IonTitle>Goals</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent scrollEvents={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
+            <IonButtons slot="primary">
+              <IonButton onClick={() => addNewGoal()}>
+                <IonIcon slot="icon-only" icon={add} />
+              </IonButton>
+            </IonButtons>
             <IonTitle size="large">Goals</IonTitle>
           </IonToolbar>
         </IonHeader>
-        
         <GoalsList
-          List={goals} 
-          User={User}/>
+          List={goalsList}
+          User={User} />
         <NewGoal
           ShowModal={showNewGoal}
           SetShowModal={setShowNewGoal}
           SaveNewGoal={saveNewGoal} />
       </IonContent>
-      <IonFooter>
-        <IonButton
-          color="primary"
-          expand="full"
-          onClick={() => addNewGoal()}>Nueva meta</IonButton>
-      </IonFooter>
     </IonPage>
   );
 };

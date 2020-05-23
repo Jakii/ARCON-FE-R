@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
-    IonRow, IonProgressBar, IonHeader, IonTitle, IonItem, IonList, IonCheckbox, IonIcon
+    IonRow, IonProgressBar, IonImg, IonTitle, IonItem, IonList, IonCheckbox, IonIcon
 } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import './GoalsDetail.css';
@@ -38,7 +38,7 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
         var totalActivitiesTrue = activities.filter(x => {
             return x.Checked === true
         }).length;
-   
+
         var newPercent = totalActivitiesTrue / totalActivities;
         Goal.Progress = newPercent;
 
@@ -59,26 +59,23 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
     return (
         <IonModal isOpen={ShowModal}>
             <IonContent>
+                <IonImg src="../../assets/viaje.jpg" class="imagen" />
                 <IonGrid>
                     <IonRow>
-                        <IonCol size="5"></IonCol>
-                        <IonCol size="4" className="ion-align-self-center">
-                            <IonLabel class="title">{Goal.Title}</IonLabel>
-                        </IonCol>
-                        <IonCol size="4"></IonCol>
+                    <IonLabel class="title" color="purple" >{Goal.Title}</IonLabel>
                     </IonRow>
                     <br />
                     <IonRow>
                         <IonCol size="5"></IonCol>
                         <IonCol size="4" className="ion-align-self-center">
-                            <IonLabel class="progress">{Goal.Progress}%</IonLabel>
+                            <IonLabel class="progress" color="lightblue">{Goal.Progress}%</IonLabel>
                         </IonCol>
                         <IonCol size="4"></IonCol>
                     </IonRow>
                     <IonRow>
                         <IonCol size="1"></IonCol>
                         <IonCol size="10" className="ion-align-self-center">
-                            <IonProgressBar color="success" value={goal.Progress} class="bar"></IonProgressBar>
+                            <IonProgressBar color="green" value={Goal.Progress/100} class="bar"></IonProgressBar>
                         </IonCol>
                     </IonRow>
                     <br />

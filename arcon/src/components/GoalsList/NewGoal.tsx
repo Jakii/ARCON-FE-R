@@ -3,6 +3,7 @@ import {
     IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
     IonRow, IonInput,IonSelect, IonSelectOption
 } from '@ionic/react';
+import './NewGoal.css';
 
 type NewGoalProps = {
     ShowModal: any,
@@ -25,32 +26,32 @@ const NewGoal: React.FC<NewGoalProps> = ({ ShowModal, SetShowModal, SaveNewGoal 
             <IonContent>
                 <IonGrid>
                     <IonRow>
-                        <IonLabel class="title">Nueva Meta</IonLabel>
+                        <IonLabel color="purple" class="title">Nueva Meta</IonLabel>
                     </IonRow>
                     <br />
                     <br />
                     <IonRow>
                         <IonInput placeholder="Nombre de la meta"
                             autofocus={true}
-                            color="secondary"
+                            color="lightblue"
                             onIonChange={e => setName(e.detail.value!)}></IonInput>
                     </IonRow>
                     <IonRow>
                         <IonInput placeholder="Descripcion"
                             autofocus={true}
-                            color="secondary"
+                            color="lightblue"
                             onIonChange={e => setDescription(e.detail.value!)}></IonInput>
                     </IonRow>
                     <IonRow>
                         <IonInput placeholder="Monto"
                             autofocus={true}
-                            color="secondary"
+                            color="lightblue"
                             onIonChange={e => setAmount(parseFloat(e.detail.value!))}></IonInput>
                     </IonRow>
                     <br/>
                     <br/>
                     <IonRow>
-                        <IonLabel>Perfil a asignar: </IonLabel>
+                        <IonLabel color="purple">Perfil a asignar: </IonLabel>
                     
                     </IonRow>
                     <IonRow>
@@ -62,8 +63,8 @@ const NewGoal: React.FC<NewGoalProps> = ({ ShowModal, SetShowModal, SaveNewGoal 
 
                 </IonGrid>
             </IonContent>
-            <IonButton onClick={() => save()} color="success">Guardar</IonButton>
-            <IonButton onClick={() => SetShowModal(false)}>Regresar</IonButton>
+            <IonButton onClick={() => save()} color="green">Guardar</IonButton>
+            <IonButton onClick={() => SetShowModal(false)} color="lightblue">Regresar</IonButton>
         </IonModal>
     );
 };

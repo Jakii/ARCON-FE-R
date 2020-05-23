@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { IonButton, IonIcon, IonGrid, IonRow, IonCol, IonList, IonItem, IonLabel, IonContent, IonBadge } from '@ionic/react';
+import { IonList, IonItem, IonCard, IonContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg } from '@ionic/react';
 import { arrowForward, add } from 'ionicons/icons';
 
 import GoalsDetail from './../GoalsDetail/GoalsDetail';
 
 type GoalsProps = {
     List: any[],
-    User:{}
+    User: {}
 }
 
-const GoalsList: React.FC<GoalsProps> = ({List,User}) => {
-    
-    const [selectedGoal, setSelectedGoal]=useState({});
-    const [selectedActivities, setSelectedActivities]=useState([]);
-    const [showModal,setShowModal]=useState(false);
+const GoalsList: React.FC<GoalsProps> = ({ List, User }) => {
 
-    const goToDetail=(item:any)=>{
+    const [selectedGoal, setSelectedGoal] = useState({});
+    const [selectedActivities, setSelectedActivities] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const goToDetail = (item: any) => {
         setSelectedGoal(item);
         setShowModal(true);
         setSelectedActivities(item.Activities);
@@ -23,25 +23,31 @@ const GoalsList: React.FC<GoalsProps> = ({List,User}) => {
 
     const renderGoals = List.map(x => {
         return (
-            <IonItem>
-                <IonLabel>{x.Title}</IonLabel>
-                <IonLabel color="warning">{x.ProfileId}</IonLabel>
-                <IonButton onClick={()=>goToDetail(x)}> <IonIcon icon={arrowForward} /></IonButton>
-            </IonItem>
+            <IonCard
+                color="purple"
+                onClick={() => goToDetail(x)}>
+                <IonImg src="../../assets/viaje.jpg" class="imagen" />
+                <IonCardHeader>
+                    {/* <IonCardSubtitle>{x.Profile}</IonCardSubtitle> */}
+                    <IonCardTitle>
+                        <IonItem color="transparent">
+                            {x.Title}
+                        </IonItem>
+                    </IonCardTitle>
+                </IonCardHeader>
+            </IonCard>
         )
     });
 
     return (
-        <IonContent>
-            <IonList>
-                {renderGoals}
-            </IonList>
-            <GoalsDetail 
-            Goal={selectedGoal}
-            ShowModal={showModal}
-            SetShowModal={setShowModal}
-            Activities={selectedActivities}/>
-        </IonContent>
+        <div>
+            {renderGoals}
+            <GoalsDetail
+                Goal={selectedGoal}
+                ShowModal={showModal}
+                SetShowModal={setShowModal}
+                Activities={selectedActivities} />
+        </div>
     )
 }
 

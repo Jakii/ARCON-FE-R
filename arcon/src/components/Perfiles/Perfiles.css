@@ -13,6 +13,14 @@
     font-size: 18px;
 }
 
+.title{
+    font-size:24px;
+}
+
 .focus{
     background-focused:black;
+}
+
+.imagen{
+    border-radius: 25%;
 }

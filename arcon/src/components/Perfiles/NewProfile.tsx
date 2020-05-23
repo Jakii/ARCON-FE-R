@@ -23,21 +23,22 @@ const NewProfile: React.FC<NewProfileProps> = ({ ShowModal, SetShowModal, SaveNe
             <IonContent>
                 <IonGrid>
                     <IonRow>
-                        <IonLabel class="title">Nuevo Perfil</IonLabel>
+                        <IonLabel color="purple" style={{fontSize:"24px"}}>Nuevo Perfil</IonLabel>
                     </IonRow>
                     <br />
                     <br />
                     <IonRow>
-                        <IonInput placeholder="Nombre del perfil" 
+                        <IonInput 
+                        placeholder="Nombre del perfil" 
                         autofocus={true} 
-                        color="secondary"
+                        color="primary"
                         onIonChange={e=>setName(e.detail.value!)}></IonInput>
                     </IonRow>
 
                 </IonGrid>
             </IonContent>
-            <IonButton onClick={save} color="success">Guardar</IonButton>
-            <IonButton onClick={() => SetShowModal(false)}>Regresar</IonButton>
+            <IonButton onClick={save} color="green">Guardar</IonButton>
+            <IonButton onClick={() => SetShowModal(false)} color="lightblue">Regresar</IonButton>
         </IonModal>
     );
 };

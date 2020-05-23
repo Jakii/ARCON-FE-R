@@ -61,10 +61,6 @@ const App: React.FC = () => {
               <IonIcon icon={star} />
               <IonLabel>Goals</IonLabel>
             </IonTabButton>
-            {/* <IonTabButton tab="kids" href="/kids">
-            <IonIcon icon={star} />
-            <IonLabel>Kids</IonLabel>
-          </IonTabButton> */}
             <IonTabButton tab="profile" href="/profile">
               <IonIcon icon={settings} />
               <IonLabel>Profile</IonLabel>

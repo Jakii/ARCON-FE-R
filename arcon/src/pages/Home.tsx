@@ -27,21 +27,7 @@ const Home: React.FC<HomeProps> = ({User, SetUser}) => {
 ];
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Home</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <Perfiles ListaPerfiles={profiles} User={User} SetUser={SetUser} />
-      </IonContent>
-    </IonPage>
+    <Perfiles ListaPerfiles={profiles} User={User} SetUser={SetUser} />
   );
 };
 
