@@ -34,8 +34,8 @@ const NewGoal: React.FC<NewActivityProps> = ({ ShowModal, SetShowModal, SaveNewA
                     </IonRow>
                 </IonGrid>
             </IonContent>
-            <IonButton onClick={() => save()} color="success">Guardar</IonButton>
-            <IonButton onClick={() => SetShowModal(false)}>Regresar</IonButton>
+            <IonButton onClick={() => save()} color="green">Guardar</IonButton>
+            <IonButton onClick={() => SetShowModal(false)} color="lightblue">Regresar</IonButton>
         </IonModal>
     );
 };

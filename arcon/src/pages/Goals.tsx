@@ -43,7 +43,7 @@ const Goals: React.FC<GoalsProps> = ({ User, SetUser }) => {
       GoalId: 2,
       ProfileId: 1,
       Profile:"Gaby",
-      Title: "Viaje a Seul",
+      Title: "Viaje a Disney",
       Description: "",
       Amount: 50000,
       Progress: 50,

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
     IonIcon, IonContent, IonList, IonCard, IonCardHeader, IonCardSubtitle,
-    IonCardTitle, IonFab, IonFabButton,
-    IonThumbnail, IonImg, IonAvatar, IonItem, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonButton
+    IonCardTitle, IonFab, IonFabButton, IonImg, IonAvatar, IonItem, IonHeader, IonPage, 
+    IonTitle, IonToolbar, IonButtons, IonButton
 } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import './Perfiles.css';
@@ -69,11 +69,6 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser }) 
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Home</IonTitle>
-                </IonToolbar>
-            </IonHeader>
             <IonContent>
                 <IonHeader collapse="condense">
                     <IonToolbar>

@@ -3,7 +3,7 @@ import {
     IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
     IonRow, IonProgressBar, IonImg, IonTitle, IonItem, IonList, IonCheckbox, IonIcon
 } from '@ionic/react';
-import { add } from 'ionicons/icons';
+import { star } from 'ionicons/icons';
 import './GoalsDetail.css';
 import NewActivity from './../Activities/NewActivity';
 
@@ -59,24 +59,25 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
     return (
         <IonModal isOpen={ShowModal}>
             <IonContent>
-                <IonImg src="../../assets/viaje.jpg" class="imagen" />
+                <IonImg src="../../assets/viajeadisney.jpg" class="imagen" />
                 <IonGrid>
                     <IonRow>
-                    <IonLabel class="title" color="purple" >{Goal.Title}</IonLabel>
+                        <IonLabel class="title" color="purple" >{Goal.Title}</IonLabel>
                     </IonRow>
                     <br />
                     <IonRow>
                         <IonCol size="5"></IonCol>
                         <IonCol size="4" className="ion-align-self-center">
-                            <IonLabel class="progress" color="lightblue">{Goal.Progress}%</IonLabel>
+                            <IonLabel class="progress" color="darkblue">{Goal.Progress}%</IonLabel>
                         </IonCol>
                         <IonCol size="4"></IonCol>
                     </IonRow>
                     <IonRow>
                         <IonCol size="1"></IonCol>
                         <IonCol size="10" className="ion-align-self-center">
-                            <IonProgressBar color="green" value={Goal.Progress/100} class="bar"></IonProgressBar>
+                            <IonProgressBar color="green" value={Goal.Progress / 100} class="bar"></IonProgressBar>                          
                         </IonCol>
+                       
                     </IonRow>
                     <br />
                     <br />
@@ -87,9 +88,7 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
                     </IonRow>
                     <IonRow>
                         <IonCol size="12" >
-                            <IonList>
-                                {renderActivities}
-                            </IonList>
+                        {renderActivities}
                         </IonCol>
                     </IonRow>
                 </IonGrid>
@@ -98,12 +97,12 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
             <IonButton
                 ion-button
                 icon-start
-                color="secondary"
+                color="lightpurple"
                 onClick={() => addNewActivity()}
             >
                 Nueva Actividad
                         </IonButton>
-            <IonButton onClick={() => SetShowModal(false)}>Regresar</IonButton>
+            <IonButton onClick={() => SetShowModal(false)} color="lightblue">Regresar</IonButton>
         </IonModal>
     );
 };

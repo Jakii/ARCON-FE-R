@@ -26,7 +26,7 @@ const GoalsList: React.FC<GoalsProps> = ({ List, User }) => {
             <IonCard
                 color="purple"
                 onClick={() => goToDetail(x)}>
-                <IonImg src="../../assets/viaje.jpg" class="imagen" />
+                <IonImg src="../../assets/viajeadisney.jpg" class="imagen" />
                 <IonCardHeader>
                     {/* <IonCardSubtitle>{x.Profile}</IonCardSubtitle> */}
                     <IonCardTitle>

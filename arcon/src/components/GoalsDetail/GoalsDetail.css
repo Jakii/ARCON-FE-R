@@ -12,8 +12,9 @@
 
 .bar{
     width: 70%;
+    height: 20px;
     margin-left: 15%;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 .progress{
