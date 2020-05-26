@@ -1,48 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonButtons, IonIcon } from '@ionic/react';
 import './Goals.css';
 import GoalsList from './../components/GoalsList/GoalsList';
 import NewGoal from './../components/GoalsList/NewGoal';
 import { add } from 'ionicons/icons';
 
-type GoalsProps = {
-  User: {},
-  SetUser: Function
-}
 
-const Goals: React.FC<GoalsProps> = ({ User, SetUser }) => {
+const Goals: React.FC = () => {
   const [showDetailComponent, setShowDetailComponent] = useState(false);
   const [showNewGoal, setShowNewGoal] = useState(false);
   const [goals, setGoals] = useState(Array());
 
-  // useEffect(()=>{
-  //   saveNewGoal("Viaje","Roatan",10000,"Gaby");
-  // })
-
   const goalsList = [
-    // {
-    //   GoalId: 1,
-    //   ProfileId: 1,
-    //   Title: "Mac",
-    //   Description: "",
-    //   Amount: 0,
-    //   Progress: 0,
-    //   StatusId: 1,
-    //   Activities: [
-    //     {
-    //       ActivityId: 1,
-    //       Name: "Arreglar mi habitación"
-    //     },
-    //     {
-    //       ActivityId: 2,
-    //       Name: "Sacar la basura"
-    //     }
-    //   ]
-    // },
     {
       GoalId: 2,
       ProfileId: 1,
-      Profile:"Gaby",
+      Profile: "Gaby",
       Title: "Viaje a Disney",
       Description: "",
       Amount: 50000,
@@ -58,26 +31,7 @@ const Goals: React.FC<GoalsProps> = ({ User, SetUser }) => {
           Name: "Sacar la basura"
         }
       ]
-    },
-    // {
-    //   GoalId: 3,
-    //   ProfileId: 2,
-    //   Title: "Nintendo switch",
-    //   Description: "",
-    //   Amount: 0,
-    //   Progress: 50,
-    //   StatusId: 1,
-    //   Activities: [
-    //     {
-    //       ActivityId: 1,
-    //       Name: "Arreglar mi habitación"
-    //     },
-    //     {
-    //       ActivityId: 2,
-    //       Name: "Sacar la basura"
-    //     }
-    //   ]
-    // }
+    }
   ];
 
   const addNewGoal = () => {
@@ -102,25 +56,19 @@ const Goals: React.FC<GoalsProps> = ({ User, SetUser }) => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader collapse="condense">
         <IonToolbar>
-          <IonTitle>Goals</IonTitle>
+          <IonButtons slot="primary">
+            <IonButton onClick={() => addNewGoal()}>
+              <IonIcon slot="icon-only" icon={add} />
+            </IonButton>
+          </IonButtons>
+          <IonTitle size="large">Goals</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent scrollEvents={true}>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonButtons slot="primary">
-              <IonButton onClick={() => addNewGoal()}>
-                <IonIcon slot="icon-only" icon={add} />
-              </IonButton>
-            </IonButtons>
-            <IonTitle size="large">Goals</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonContent>
         <GoalsList
-          List={goalsList}
-          User={User} />
+          List={goalsList} />
         <NewGoal
           ShowModal={showNewGoal}
           SetShowModal={setShowNewGoal}

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {
-    IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
+    IonModal, IonButton, IonContent, IonLabel, IonGrid,
     IonRow, IonInput
 } from '@ionic/react';
 import './Perfiles.css';

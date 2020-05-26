@@ -5,11 +5,10 @@ import { arrowForward, add } from 'ionicons/icons';
 import GoalsDetail from './../GoalsDetail/GoalsDetail';
 
 type GoalsProps = {
-    List: any[],
-    User: {}
+    List: any[]
 }
 
-const GoalsList: React.FC<GoalsProps> = ({ List, User }) => {
+const GoalsList: React.FC<GoalsProps> = ({ List }) => {
 
     const [selectedGoal, setSelectedGoal] = useState({});
     const [selectedActivities, setSelectedActivities] = useState([]);
@@ -40,14 +39,14 @@ const GoalsList: React.FC<GoalsProps> = ({ List, User }) => {
     });
 
     return (
-        <div>
+        <>
             {renderGoals}
             <GoalsDetail
                 Goal={selectedGoal}
                 ShowModal={showModal}
                 SetShowModal={setShowModal}
                 Activities={selectedActivities} />
-        </div>
+        </>
     )
 }
 

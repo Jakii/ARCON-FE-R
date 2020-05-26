@@ -38,17 +38,18 @@ import './theme/variables.css';
 
 
 const App: React.FC = () => {
-  const [user, setUser] = useState({});
-  
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/home" component={() => <Home User={user} SetUser={setUser} />} exact={true} />
-            <Route path="/goals" component={() => <Goals User={user} SetUser={setUser}  />} exact={true} />
+            <Route path="/home" component={Home} exact={true} />
+            <Route path="/goals" component={Goals} />
+            <Route path="/profile" component={Profile} />
+            {/* <Route path="/goals" component={() => <Goals User={user} SetUser={setUser}  />} exact={true} />
             <Route path="/kids" component={Kids} />
-            <Route path="/profile" component={() => <Profile User={user} SetUser={setUser} />} />
+             */}
             <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
           </IonRouterOutlet>
 
@@ -60,7 +61,7 @@ const App: React.FC = () => {
             <IonTabButton tab="goals" href="/goals">
               <IonIcon icon={star} />
               <IonLabel>Goals</IonLabel>
-            </IonTabButton>
+            </IonTabButton>    
             <IonTabButton tab="profile" href="/profile">
               <IonIcon icon={settings} />
               <IonLabel>Profile</IonLabel>

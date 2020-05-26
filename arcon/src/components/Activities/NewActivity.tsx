@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-    IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
-    IonRow, IonInput,IonSelect, IonSelectOption
+    IonModal, IonButton, IonContent, IonLabel, IonGrid,
+    IonRow, IonInput
 } from '@ionic/react';
 
 type NewActivityProps = {

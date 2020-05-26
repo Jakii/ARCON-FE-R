@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import {
     IonModal, IonButton, IonContent, IonLabel, IonGrid, IonCol,
-    IonRow, IonProgressBar, IonImg, IonTitle, IonItem, IonList, IonCheckbox, IonIcon
+    IonRow, IonProgressBar, IonImg, IonItem, IonCheckbox
 } from '@ionic/react';
-import { star } from 'ionicons/icons';
 import './GoalsDetail.css';
 import NewActivity from './../Activities/NewActivity';
 

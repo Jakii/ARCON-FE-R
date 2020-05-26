@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import {
     IonIcon, IonContent, IonList, IonCard, IonCardHeader, IonCardSubtitle,
-    IonCardTitle, IonFab, IonFabButton, IonImg, IonAvatar, IonItem, IonHeader, IonPage, 
-    IonTitle, IonToolbar, IonButtons, IonButton
+    IonCardTitle, IonFab, IonFabButton, IonImg, IonAvatar, IonItem, IonHeader, IonPage,
+    IonTitle, IonToolbar
 } from '@ionic/react';
-import { add } from 'ionicons/icons';
 import './Perfiles.css';
-import NewProfile from './NewProfile';
 import './../../theme/variables.css';
 
 type ProfileProps = {
     ListaPerfiles: any[],
-    User: {},
-    SetUser: Function
 }
 
-const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser }) => {
-
+const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
+    
     const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
-    const [showNewProfile, setShowNewProfile] = useState(false);
 
     const renderProfiles = () => {
         return (
@@ -26,8 +21,9 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser }) 
                 return (
                     <IonCard
                         color={x.RolId == 1 ? "orange" : "lightblue"}
-                        onClick={() => goToHome(x)}
-                        href="/Goals">
+                        //onClick={() => goToHome(x)}
+                        //href="/Goals"
+                        >
                         <IonCardHeader>
                             <IonCardSubtitle>{x.RolId == 1 ? "Propietario" : ""}</IonCardSubtitle>
                             <IonCardTitle>
@@ -35,7 +31,6 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser }) 
                                     <IonAvatar slot="start">
                                         <img src="../../assets/avatar.png" />
                                     </IonAvatar>
-
                                     {x.Name}
                                 </IonItem>
                             </IonCardTitle>
@@ -45,49 +40,17 @@ const ProfilesList: React.FC<ProfileProps> = ({ ListaPerfiles, User, SetUser }) 
             }))
     }
 
-    const addNewProfile = () => {
-        setShowNewProfile(true);
-    }
 
     const goToHome = (item: any) => {
-        SetUser(item);
         setListaPerfiles(ListaPerfiles);
     }
 
-
-    const saveNewProfile = (name: any) => {
-        const lenghtProfilesList = listaPerfiles.length;
-        const lastIndex = listaPerfiles[lenghtProfilesList - 1];
-        var newProfile = {
-            Name: name,
-            RolId: 2,
-            ProfileId: lastIndex + 1
-        };
-        listaPerfiles.push(newProfile);
-        setListaPerfiles(listaPerfiles);
-    }
-
     return (
-        <IonPage>
-            <IonContent>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonButtons slot="primary">
-                            <IonButton onClick={() => addNewProfile()}> 
-                                <IonIcon slot="icon-only" icon={add}/>
-                            </IonButton>
-                        </IonButtons>
-                        <IonTitle size="large">Home</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-                <IonImg src="../../assets/ahorro.jpg" class="imagen" />
-                <IonList>
-                    {renderProfiles()}
-                </IonList>
-                <NewProfile ShowModal={showNewProfile} SetShowModal={() => { setShowNewProfile(false) }} SaveNewProfile={saveNewProfile} />
-            </IonContent>
-        </IonPage>
+        <>
+            <IonImg src="../../assets/ahorro.jpg" class="imagen" />
+            {renderProfiles()}
+        </>
     )
 }
 
-export default ProfilesList;
+export default Perfiles;
