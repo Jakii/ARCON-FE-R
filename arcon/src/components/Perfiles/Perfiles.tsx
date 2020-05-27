@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-    IonIcon, IonContent, IonList, IonCard, IonCardHeader, IonCardSubtitle,
-    IonCardTitle, IonFab, IonFabButton, IonImg, IonAvatar, IonItem, IonHeader, IonPage,
-    IonTitle, IonToolbar
+import { IonCard, IonCardHeader, IonCardSubtitle,
+    IonCardTitle, IonImg, IonAvatar, IonItem, IonCardContent
 } from '@ionic/react';
 import './Perfiles.css';
 import './../../theme/variables.css';
@@ -21,13 +19,13 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
                 return (
                     <IonCard
                         color={x.RolId == 1 ? "orange" : "lightblue"}
-                        //onClick={() => goToHome(x)}
-                        //href="/Goals"
+                        onClick={() => goToHome(x)}
+                        href="/Goals"
                         >
                         <IonCardHeader>
                             <IonCardSubtitle>{x.RolId == 1 ? "Propietario" : ""}</IonCardSubtitle>
                             <IonCardTitle>
-                                <IonItem color="transparent">
+                                <IonItem color="transparent" lines="none">
                                     <IonAvatar slot="start">
                                         <img src="../../assets/avatar.png" />
                                     </IonAvatar>
@@ -35,6 +33,9 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
                                 </IonItem>
                             </IonCardTitle>
                         </IonCardHeader>
+                        {/* <IonCardContent style={{background:"#FFFFFF"}}>
+                            test
+                        </IonCardContent> */}
                     </IonCard>
                 )
             }))
