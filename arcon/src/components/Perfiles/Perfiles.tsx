@@ -10,32 +10,29 @@ type ProfileProps = {
 }
 
 const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
-    
-    const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
+
+    // const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
 
     const renderProfiles = () => {
         return (
-            listaPerfiles.map(x => {
+            ListaPerfiles.map(x => {
                 return (
                     <IonCard
-                        color={x.RolId == 1 ? "orange" : "lightblue"}
+                        color={x.rolId == 1 ? "orange" : "lightblue"}
                         onClick={() => goToHome(x)}
                         href="/Goals"
                         >
                         <IonCardHeader>
-                            <IonCardSubtitle>{x.RolId == 1 ? "Propietario" : ""}</IonCardSubtitle>
+                            <IonCardSubtitle>{x.rolId == 1 ? "Propietario" : ""}</IonCardSubtitle>
                             <IonCardTitle>
                                 <IonItem color="transparent" lines="none">
                                     <IonAvatar slot="start">
                                         <img src="../../assets/avatar.png" />
                                     </IonAvatar>
-                                    {x.Name}
+                                    {x.name}
                                 </IonItem>
                             </IonCardTitle>
                         </IonCardHeader>
-                        {/* <IonCardContent style={{background:"#FFFFFF"}}>
-                            test
-                        </IonCardContent> */}
                     </IonCard>
                 )
             }))
@@ -43,7 +40,7 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
 
 
     const goToHome = (item: any) => {
-        setListaPerfiles(ListaPerfiles);
+        // setListaPerfiles(ListaPerfiles);
     }
 
     return (
