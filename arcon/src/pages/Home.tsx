@@ -12,20 +12,6 @@ type HomeProps = {
 const Home: React.FC<HomeProps> = ({ }) => {
   const [showNewProfile, setShowNewProfile] = useState(false);
   const [profiles, setProfiles] = useState([]);
-  // const profiles = [
-  //   {
-  //     "ProfileId": 1,
-  //     "Name": "Gaby",
-  //     "RolId": 1,
-  //     "UserAppId": "Gaby"
-  //   },
-  //   {
-  //     "ProfileId": 1,
-  //     "Name": "Issa",
-  //     "RolId": 2,
-  //     "UserAppId": "Issa"
-  //   }
-  // ];
 
   const getProfiles=async ()=>{
     const req= API.get('UserProfile');
@@ -43,16 +29,15 @@ const Home: React.FC<HomeProps> = ({ }) => {
 
 
   const saveNewProfile = (name: any) => {
-    const lenghtProfilesList = profiles.length;
-    const lastIndex = profiles[lenghtProfilesList - 1];
     var newProfile = {
-      Name: name,
-      RolId: 2,
-      ProfileId: 1,
-      UserAppId: "gtabora"
+      name: name,
+      rolId: 2,
+      profileId: 1,
+      userAppId: name
     };
-    // profiles.push(newProfile);
-    // setProfiles(listaPerfiles);
+
+    const req= API.post('UserProfile', newProfile);
+    console.log(req);
   }
 
   return (

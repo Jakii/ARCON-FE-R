@@ -40,7 +40,7 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
 
 
     const goToHome = (item: any) => {
-        // setListaPerfiles(ListaPerfiles);
+        //  setListaPerfiles(ListaPerfiles);
     }
 
     return (
