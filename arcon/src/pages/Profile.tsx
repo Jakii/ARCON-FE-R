@@ -8,7 +8,7 @@ type ProfileProps={
   SetUser:Function
 }
 
-const Profile: React.FC<ProfileProps> = ({User, SetUser}) => {
+const Profile: React.SFC<ProfileProps> = ({User, SetUser}) => {
   return (
     <IonPage>
       <IonHeader>

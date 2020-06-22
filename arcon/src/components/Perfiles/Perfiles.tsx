@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { IonCard, IonCardHeader, IonCardSubtitle,
     IonCardTitle, IonImg, IonAvatar, IonItem, IonCardContent
 } from '@ionic/react';
 import './Perfiles.css';
 import './../../theme/variables.css';
+import { Redirect } from 'react-router';
+import { UserContext } from '../../App';
 
 type ProfileProps = {
     ListaPerfiles: any[],
 }
 
 const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
-
-    // const [listaPerfiles, setListaPerfiles] = useState(ListaPerfiles);
-
+    const user = useContext(UserContext);
     const renderProfiles = () => {
         return (
             ListaPerfiles.map(x => {
                 return (
                     <IonCard
                         color={x.rolId == 1 ? "orange" : "lightblue"}
-                        onClick={() => goToHome(x)}
-                        href="/Goals"
+                        routerLink="/goals"
+                        onClick={()=>goToHome(x)}
                         >
                         <IonCardHeader>
                             <IonCardSubtitle>{x.rolId == 1 ? "Propietario" : ""}</IonCardSubtitle>
@@ -40,7 +40,7 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
 
 
     const goToHome = (item: any) => {
-        //  setListaPerfiles(ListaPerfiles);
+     user.profileSelected=item;
     }
 
     return (

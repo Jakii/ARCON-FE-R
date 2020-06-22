@@ -58,23 +58,23 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
     return (
         <IonModal isOpen={ShowModal}>
             <IonContent>
-                <IonImg src="../../assets/viajeadisney.jpg" class="imagen" />
+                <IonImg src="../../assets/ahorro.jpg" class="imagen" />
                 <IonGrid>
                     <IonRow>
-                        <IonLabel class="title" color="purple" >{Goal.Title}</IonLabel>
+                        <IonLabel class="title" color="purple" >{Goal.title}</IonLabel>
                     </IonRow>
                     <br />
                     <IonRow>
                         <IonCol size="5"></IonCol>
                         <IonCol size="4" className="ion-align-self-center">
-                            <IonLabel class="progress" color="darkblue">{Goal.Progress}%</IonLabel>
+                            <IonLabel class="progress" color="darkblue">{Goal.progress}%</IonLabel>
                         </IonCol>
                         <IonCol size="4"></IonCol>
                     </IonRow>
                     <IonRow>
                         <IonCol size="1"></IonCol>
                         <IonCol size="10" className="ion-align-self-center">
-                            <IonProgressBar color="green" value={Goal.Progress / 100} class="bar"></IonProgressBar>                          
+                            <IonProgressBar color="green" value={Goal.progress / 100} class="bar"></IonProgressBar>                          
                         </IonCol>
                        
                     </IonRow>
@@ -82,10 +82,21 @@ const GoalsDetail: React.FC<GoalsProps> = ({ Goal, ShowModal, SetShowModal, Acti
                     <br />
                     <IonRow>
                         <IonCol size="10">
-                            <IonLabel class="subtitle">Actividades</IonLabel>
+                            <IonLabel class="subtitle">Actividades Pendientes</IonLabel>
                         </IonCol>
                     </IonRow>
+                    <IonRow color="medium">
+                        <IonCol size="12" >
+                        {renderActivities}
+                        </IonCol>
+                    </IonRow>
+                    <br/>
                     <IonRow>
+                        <IonCol size="10">
+                            <IonLabel class="subtitle">Actividades Completadas</IonLabel>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow color="medium">
                         <IonCol size="12" >
                         {renderActivities}
                         </IonCol>

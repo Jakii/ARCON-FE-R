@@ -1,22 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { IonHeader, IonIcon, IonTitle, IonToolbar, IonButtons, IonButton, IonPage, IonContent } from '@ionic/react';
 import './Home.css';
 import Perfiles from './../components/Perfiles/Perfiles';
 import { add } from 'ionicons/icons';
 import NewProfile from './../components/Perfiles/NewProfile';
 import API from './../axios/axiosAPI.js';
+import { UserContext } from '../App';
 
 type HomeProps = {
 }
 
-const Home: React.FC<HomeProps> = ({ }) => {
+const Home: React.SFC<HomeProps> = ({ }) => {
   const [showNewProfile, setShowNewProfile] = useState(false);
   const [profiles, setProfiles] = useState([]);
+  const user = useContext(UserContext);
 
   const getProfiles=async ()=>{
-    const req= API.get('UserProfile');
-    const res= (await req).data.data;
-    setProfiles(res);
+    API.get('UserProfile').then(res=>{
+      if(res.data.data!=null){
+        setProfiles(res.data.data);
+        console.log(user);
+        user.profiles=res.data.data;
+      }
+    });
+ 
   }
 
   useEffect(() => {
@@ -32,12 +39,15 @@ const Home: React.FC<HomeProps> = ({ }) => {
     var newProfile = {
       name: name,
       rolId: 2,
-      profileId: 1,
-      userAppId: name
+      userAppId: 15,
+      isActive:true
     };
 
-    const req= API.post('UserProfile', newProfile);
-    console.log(req);
+    API.post('UserProfile', newProfile).then(res=>{
+        if(res.status===200){
+          getProfiles();
+        }
+    });
   }
 
   return (

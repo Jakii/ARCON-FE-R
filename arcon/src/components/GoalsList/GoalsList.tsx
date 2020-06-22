@@ -1,53 +1,65 @@
-import React, { useState } from 'react';
-import { IonList, IonItem, IonCard, IonContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg } from '@ionic/react';
-import { arrowForward, add } from 'ionicons/icons';
+import React, { useState } from "react";
+import {
+  IonList,
+  IonItem,
+  IonCard,
+  IonContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonImg,
+  IonCardContent,
+  IonLabel,
+} from "@ionic/react";
+import { arrowForward, add } from "ionicons/icons";
 
-import GoalsDetail from './../GoalsDetail/GoalsDetail';
+import GoalsDetail from "./../GoalsDetail/GoalsDetail";
 
 type GoalsProps = {
-    List: any[]
-}
+  List: any[];
+};
 
 const GoalsList: React.FC<GoalsProps> = ({ List }) => {
+  const [selectedGoal, setSelectedGoal] = useState({});
+  const [selectedActivities, setSelectedActivities] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
-    const [selectedGoal, setSelectedGoal] = useState({});
-    const [selectedActivities, setSelectedActivities] = useState([]);
-    const [showModal, setShowModal] = useState(false);
+  const goToDetail = (item: any) => {
+    setSelectedGoal(item);
+    setShowModal(true);
+    setSelectedActivities(item.Activities);
+  };
 
-    const goToDetail = (item: any) => {
-        setSelectedGoal(item);
-        setShowModal(true);
-        setSelectedActivities(item.Activities);
-    }
-
-    const renderGoals = List.map(x => {
-        return (
-            <IonCard
-                color="purple"
-                onClick={() => goToDetail(x)}>
-                <IonImg src="../../assets/viajeadisney.jpg" class="imagen" />
-                <IonCardHeader>
-                    {/* <IonCardSubtitle>{x.Profile}</IonCardSubtitle> */}
-                    <IonCardTitle>
-                        <IonItem color="transparent">
-                            {x.Title}
-                        </IonItem>
-                    </IonCardTitle>
-                </IonCardHeader>
-            </IonCard>
-        )
-    });
-
+  const renderGoals = List.map((x) => {
     return (
-        <>
-            {renderGoals}
-            <GoalsDetail
-                Goal={selectedGoal}
-                ShowModal={showModal}
-                SetShowModal={setShowModal}
-                Activities={selectedActivities} />
-        </>
-    )
-}
+      <IonCard color="purple" onClick={() => goToDetail(x)}>
+        <IonImg src="../../assets/ahorro.jpg" class="imagen" />
+        <IonCardHeader>
+          <IonCardTitle>
+            <IonItem color="transparent">Titulo: {x.title}</IonItem>
+          </IonCardTitle>
+        </IonCardHeader>
+        {/* <IonCardContent color="transparent">
+          <IonLabel>Monto: {x.amount}</IonLabel>
+          <br/>
+          <IonLabel>Avance: {x.progress}%</IonLabel>
+        </IonCardContent> */}
+        
+      </IonCard>
+    );
+  });
+
+  return (
+    <>
+      {renderGoals}
+      <GoalsDetail
+        Goal={selectedGoal}
+        ShowModal={showModal}
+        SetShowModal={setShowModal}
+        Activities={selectedActivities}
+      />
+    </>
+  );
+};
 
 export default GoalsList;
