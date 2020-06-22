@@ -36,15 +36,9 @@ const GoalsList: React.FC<GoalsProps> = ({ List }) => {
         <IonImg src="../../assets/ahorro.jpg" class="imagen" />
         <IonCardHeader>
           <IonCardTitle>
-            <IonItem color="transparent">Titulo: {x.title}</IonItem>
+            <IonItem color="transparent">{x.title}</IonItem>
           </IonCardTitle>
         </IonCardHeader>
-        {/* <IonCardContent color="transparent">
-          <IonLabel>Monto: {x.amount}</IonLabel>
-          <br/>
-          <IonLabel>Avance: {x.progress}%</IonLabel>
-        </IonCardContent> */}
-        
       </IonCard>
     );
   });

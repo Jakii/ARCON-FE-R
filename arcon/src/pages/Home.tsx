@@ -59,7 +59,7 @@ const Home: React.SFC<HomeProps> = ({ }) => {
               <IonIcon slot="icon-only" icon={add} />
             </IonButton>
           </IonButtons>
-          <IonTitle size="large">Home</IonTitle>
+          <IonTitle size="large">Perfiles</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
