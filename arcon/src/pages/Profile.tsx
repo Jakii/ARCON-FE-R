@@ -11,18 +11,14 @@ type ProfileProps={
 const Profile: React.SFC<ProfileProps> = ({User, SetUser}) => {
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader collapse="condense">
         <IonToolbar>
-          <IonTitle>Profile</IonTitle>
+         
+          <IonTitle size="large">Mi cuenta</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Profile</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Goals" />
+        
       </IonContent>
     </IonPage>
   );
