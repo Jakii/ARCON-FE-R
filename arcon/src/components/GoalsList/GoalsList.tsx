@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import {
-  IonList,
   IonItem,
   IonCard,
-  IonContent,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
-  IonImg,
-  IonCardContent,
-  IonLabel,
+  IonImg
 } from "@ionic/react";
-import { arrowForward, add } from "ionicons/icons";
 
 import GoalsDetail from "./../GoalsDetail/GoalsDetail";
 
@@ -33,7 +27,7 @@ const GoalsList: React.FC<GoalsProps> = ({ List }) => {
   const renderGoals = List.map((x) => {
     return (
       <IonCard color="purple" onClick={() => goToDetail(x)}>
-        <IonImg src="../../assets/ahorro.jpg" class="imagen" />
+        <IonImg src="../../assets/piggymoney.png" style={{height:"250px", width:"100%"}} />
         <IonCardHeader>
           <IonCardTitle>
             <IonItem color="transparent">{x.title}</IonItem>
@@ -50,7 +44,6 @@ const GoalsList: React.FC<GoalsProps> = ({ List }) => {
         Goal={selectedGoal}
         ShowModal={showModal}
         SetShowModal={setShowModal}
-        Activities={selectedActivities}
       />
     </>
   );

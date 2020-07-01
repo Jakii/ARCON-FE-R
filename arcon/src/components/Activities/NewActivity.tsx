@@ -4,8 +4,6 @@ import {
   IonButton,
   IonContent,
   IonLabel,
-  IonGrid,
-  IonRow,
   IonInput,
   IonItem,
   IonIcon,
@@ -29,6 +27,10 @@ const NewGoal: React.FC<NewActivityProps> = ({
     SaveNewActivity(name);
     SetShowModal(false);
   };
+  
+  const setNameEvent=(e:any)=>{
+    setName(e.target.value);
+  }
   return (
     <IonModal isOpen={ShowModal}>
       <IonContent>
@@ -43,7 +45,7 @@ const NewGoal: React.FC<NewActivityProps> = ({
           <IonInput
               placeholder="Nombre de la actividad"
               autofocus={true}
-              onIonChange={(e) => setName(e.detail.value!)}
+              onIonChange={(e) => setNameEvent(e)}
             ></IonInput>
         </IonItem>
       </IonContent>

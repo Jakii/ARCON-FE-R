@@ -3,11 +3,16 @@
 }
 
 .title{
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .subtitle{
     font-size: 18px;
+}
+
+.subtitleInformation{
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .bar{

@@ -41,28 +41,28 @@ const Goals: React.SFC = () => {
     getGoals();
   }, []);
 
-  const goalsList = [
-    {
-      GoalId: 2,
-      ProfileId: 1,
-      Profile: "Gaby",
-      title: "Viaje a Disney",
-      description: "",
-      amount: 50000,
-      progress: 50,
-      StatusId: 1,
-      Activities: [
-        {
-          ActivityId: 1,
-          Name: "Arreglar mi habitación"
-        },
-        {
-          ActivityId: 2,
-          Name: "Sacar la basura"
-        }
-      ]
-    }
-  ];
+  // const goalsList = [
+  //   {
+  //     GoalId: 2,
+  //     ProfileId: 1,
+  //     Profile: "Gaby",
+  //     title: "Viaje a Disney",
+  //     description: "",
+  //     amount: 50000,
+  //     progress: 50,
+  //     StatusId: 1,
+  //     Activities: [
+  //       {
+  //         ActivityId: 1,
+  //         Name: "Arreglar mi habitación"
+  //       },
+  //       {
+  //         ActivityId: 2,
+  //         Name: "Sacar la basura"
+  //       }
+  //     ]
+  //   }
+  // ];
 
   const addNewGoal = () => {
     setShowNewGoal(true);
@@ -83,6 +83,7 @@ const Goals: React.SFC = () => {
       statusId: 1,
       // Activities: []
     };
+
     API.post("Goal", newGoal).then((res) => {
       if (res.status === 200) {
         getGoals();
@@ -103,7 +104,7 @@ const Goals: React.SFC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <GoalsList List={goalsList} />
+        <GoalsList List={goals} />
         <NewGoal
           ShowModal={showNewGoal}
           SetShowModal={setShowNewGoal}

@@ -1,13 +1,7 @@
 import React, { useState, useContext } from "react";
-import { Redirect, Route, Router } from "react-router-dom";
+import { Route } from "react-router-dom";
 import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
+  IonApp
 } from "@ionic/react";
 import MainTabs from "./MainTabs";
 import { IonReactRouter } from "@ionic/react-router";

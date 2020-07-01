@@ -39,10 +39,9 @@ const Home: React.SFC<HomeProps> = ({ }) => {
     var newProfile = {
       name: name,
       rolId: 2,
-      userAppId: 15,
+      userAppId: 8,
       isActive:true
     };
-
     API.post('UserProfile', newProfile).then(res=>{
         if(res.status===200){
           getProfiles();

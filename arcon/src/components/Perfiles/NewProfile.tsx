@@ -15,6 +15,7 @@ const NewProfile: React.FC<NewProfileProps> = ({ ShowModal, SetShowModal, SaveNe
     const [name, setName]=useState<string>();
 
     const save=()=>{
+        debugger;
         SaveNewProfile(name);
         SetShowModal(false);
     }
