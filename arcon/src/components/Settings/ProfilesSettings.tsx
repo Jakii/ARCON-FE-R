@@ -7,20 +7,20 @@ import {
 import "./../GoalsDetail/GoalsDetail.css";
 
 type ProfileSettingsProps = {
-  ShowModal: any;
-  SetShowModal: Function;
+  ShowModalP: any;
+  SetShowModalP: Function;
 };
 
 const ProfileSettings: React.FC<ProfileSettingsProps> = ({
-  ShowModal,
-  SetShowModal,
+  ShowModalP,
+  SetShowModalP,
 }) => {
   return (
-    <IonModal isOpen={ShowModal}>
+    <IonModal isOpen={ShowModalP}>
       <IonContent>
 
      </IonContent>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton onClick={() => SetShowModalP(false)} color="lightblue">
         Regresar
       </IonButton>
     </IonModal>

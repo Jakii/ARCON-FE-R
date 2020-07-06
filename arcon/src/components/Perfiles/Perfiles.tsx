@@ -15,7 +15,7 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
     const user = useContext(UserContext);
     const renderProfiles = () => {
         return (
-            ListaPerfiles.map(x => {
+           ListaPerfiles&& ListaPerfiles.map(x => {
                 return (
                     <IonCard
                         color={x.rolId == 1 ? "orange" : "lightblue"}

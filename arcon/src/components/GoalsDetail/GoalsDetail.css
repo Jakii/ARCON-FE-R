@@ -10,9 +10,29 @@
     font-size: 18px;
 }
 
+.circleProgressBar{
+    height: 150px;
+    width: 100%;
+}
+
 .subtitleInformation{
     font-size: 18px;
     font-weight: bold;
+
+}
+
+.taskTitle{
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+
+.tasks{
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: center;
+    width: 100%;
 }
 
 .bar{

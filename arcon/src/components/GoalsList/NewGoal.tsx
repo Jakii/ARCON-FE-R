@@ -16,6 +16,7 @@ import {
   documentTextOutline,
   cashOutline,
   peopleOutline,
+  starOutline,
 } from "ionicons/icons";
 import { UserContext } from "../../App";
 
@@ -68,9 +69,9 @@ const NewGoal: React.FC<NewGoalProps> = ({
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonIcon icon={cashOutline} slot="start" />
+          <IonIcon icon={starOutline} slot="start" />
           <IonInput
-            placeholder="Monto"
+            placeholder="Puntos"
             autofocus={true}
             // color="lightblue"
             onIonChange={(e) => setAmount(parseFloat(e.detail.value!))}

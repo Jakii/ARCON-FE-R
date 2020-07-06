@@ -11,9 +11,15 @@ import {
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./Profile.css";
-import { chevronForwardOutline } from "ionicons/icons";
-import PersonalInformation from './../components/Settings/PersonalInformation';
-import ProfileSettings from './../components/Settings/PersonalInformation';
+import {
+  chevronForwardOutline,
+  person,
+  personOutline,
+  peopleOutline,
+  logOutOutline,
+} from "ionicons/icons";
+import PersonalInformation from "./../components/Settings/PersonalInformation";
+import ProfileSettings from "./../components/Settings/ProfilesSettings";
 
 type ProfileProps = {
   User: {};
@@ -21,40 +27,45 @@ type ProfileProps = {
 };
 
 const Profile: React.SFC<ProfileProps> = ({ User, SetUser }) => {
-  const [showModal, setShowModal]=useState(false);
-  const [showProfileSettings, setShowProfileSettings]=useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showProfileSettings, setShowProfileSettings] = useState(false);
 
-  const goToPersonalInformation=()=>{
+  const goToPersonalInformation = () => {
     setShowModal(true);
-  }
+  };
 
-  const goToProfilesSettings=()=>{
+  const goToProfilesSettings = () => {
     setShowProfileSettings(true);
-  }
+  };
 
   return (
     <IonPage>
-      <PersonalInformation ShowModal={showModal} SetShowModal={setShowModal}/>
-      <ProfileSettings ShowModal={showProfileSettings} SetShowModal={setShowProfileSettings}/>
-      <IonHeader collapse="condense">
-        <IonToolbar>
+      <PersonalInformation ShowModal={showModal} SetShowModal={setShowModal} />
+      <ProfileSettings
+        ShowModalP={showProfileSettings}
+        SetShowModalP={setShowProfileSettings}
+      />
+      <IonToolbar>
           <IonTitle size="large">Mi cuenta</IonTitle>
         </IonToolbar>
-      </IonHeader>
       <IonContent>
         <br />
         <IonItem onClick={goToPersonalInformation}>
+          <IonIcon icon={personOutline} slot="start" />
           <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
           <IonLabel>Información Personal</IonLabel>
         </IonItem>
+        
         <IonItem onClick={goToProfilesSettings}>
+          <IonIcon icon={peopleOutline} slot="start" />
           <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
           <IonLabel>Perfiles</IonLabel>
-        </IonItem>  
+        </IonItem>
         <IonItem>
+          <IonIcon icon={logOutOutline} slot="start" />
           <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
           <IonLabel>Cerrar Sesión</IonLabel>
-        </IonItem>  
+        </IonItem>
       </IonContent>
     </IonPage>
   );

@@ -34,8 +34,9 @@ const NewGoal: React.FC<NewActivityProps> = ({
   return (
     <IonModal isOpen={ShowModal}>
       <IonContent>
+        <br/>
         <IonLabel color="purple" class="title">
-          Nueva Actividad
+          Nueva Tarea
         </IonLabel>
         <br />
         <br />
@@ -43,7 +44,7 @@ const NewGoal: React.FC<NewActivityProps> = ({
         <IonItem>
           <IonIcon icon={documentTextOutline} slot="start" />
           <IonInput
-              placeholder="Nombre de la actividad"
+              placeholder="Nombre de la tarea"
               autofocus={true}
               onIonChange={(e) => setNameEvent(e)}
             ></IonInput>

@@ -32,6 +32,7 @@ interface IUserManager {
   userInfo:any;
   profiles:any;
   profileSelected:any;
+  goals:any;
 }
 
 const user: IUserManager = {
@@ -39,7 +40,8 @@ const user: IUserManager = {
   setUserInfo: () => {},
   userInfo:{},
   profiles:[],
-  profileSelected:{}
+  profileSelected:{},
+  goals:[]
 };
 
 export const UserContext = React.createContext<IUserManager>(user);

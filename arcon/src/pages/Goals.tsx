@@ -24,13 +24,18 @@ const Goals: React.SFC = () => {
   const user = useContext(UserContext);
 
   const getGoals = () => {
-    API.get("Goals/GetByUserProfileId?userProfileId=" + user.profileSelected.userProfileId).then(
-      (res) => {
-        if (res.data.data != null) {
-          setGoals(res.data.data);
-        }
+    const id = user.profileSelected.userProfileId;
+    API.get("Goals/GetByUserProfileId?userProfileId=" + id).then((res) => {
+      if (res.data.data != null) {
+        var g = res.data.data.filter((x: any) => {
+          return x.statusId === 1 || x.statusId === 2;
+        });
+        setGoals(g);
+        user.goals = g;
+      } else {
+        setGoals([]);
       }
-    );
+    });
   };
 
   useIonViewWillEnter(() => {
@@ -93,18 +98,16 @@ const Goals: React.SFC = () => {
 
   return (
     <IonPage>
-      <IonHeader collapse="condense">
-        <IonToolbar>
-          <IonButtons slot="primary">
-            <IonButton onClick={() => addNewGoal()}>
-              <IonIcon slot="icon-only" icon={add} />
-            </IonButton>
-          </IonButtons>
-          <IonTitle size="large">Metas</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <IonToolbar>
+        <IonButtons slot="primary">
+          <IonButton onClick={() => addNewGoal()}>
+            <IonIcon slot="icon-only" icon={add} />
+          </IonButton>
+        </IonButtons>
+        <IonTitle size="large" color="purple">Metas</IonTitle>
+      </IonToolbar>
       <IonContent>
-        <GoalsList List={goals} />
+        <GoalsList List={goals} GetGoals={getGoals} />
         <NewGoal
           ShowModal={showNewGoal}
           SetShowModal={setShowNewGoal}

@@ -20,37 +20,32 @@ import API from "./../../axios/axiosAPI.js";
 import Register from "../Register/Register";
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("gtabora");
+  const [password, setPassword] = useState("Minato30.");
   const user = useContext(UserContext);
   const [isRegister, setIsRegister] = useState(false);
-  const [showToast, setShowToast]=useState(false);
-  const [toastMessage, setToastMessage]=useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
-  const loginUser = async () => {
+  const loginUser = () => {
+  
+    if(username===''||password===''){
+      setToastMessage('Ingrese su correo o contraseña');
+      setShowToast(true);
+      return;
+    }
     const url = "UserApp/Login?UserName=" + username + "&Password=" + password;
-    await API.get(url).then((res) => {
+    API.get(url).then((res) => {
       if (res.data.succeeded) {
+        user.setUserInfo(res.data.data.userApp);
+        user.userInfo = res.data.data.userApp;
+        user.profiles = res.data.data.userProfiles;
         user.setIsLoggedIn(true);
-        const userInfor = {
-          userProfileId: 1,
-          rolId: 1,
-          userAppId: 15,
-          name: "Evelyn Paz",
-          isActive: true,
-        };
-    
-        user.setIsLoggedIn(true);
-        user.setUserInfo(userInfor);
-        user.userInfo = userInfor;
-      }
-      else{
+      } else {
         setToastMessage(res.data.message);
         setShowToast(true);
       }
     });
-
-    
   };
 
   const goToRegister = () => {
@@ -71,26 +66,29 @@ const Login: React.FC = () => {
         isOpen={showToast}
         onDidDismiss={() => setShowToast(false)}
         message={toastMessage}
-        duration={1000}
+        duration={2000}
         position="top"
       />
       {!isRegister ? (
-        <IonGrid style={{ backgroundColor: "#011627", width:'100%' }}>
-          {/* <IonImg src="../../assets/login.jpg" class="imagen" />
-          <br /> */}
-          <br/>  
-          <br/>  
-          <br/>  
+        <IonGrid style={{ backgroundColor: "#011627", width: "100%" }}>
           <br/>
-          <br/>  
-          <br/>  
           <br/>
           <IonCard>
             <IonCardHeader>
-              <IonCardTitle style={{textAlign:'center'}}>Iniciar Sesión</IonCardTitle>
+              <IonImg
+                src="../../assets/Arcon.png"
+                style={{ height: "180px" }}
+              />
+             
+              <br />
+              <IonCardTitle style={{ textAlign: "center" }}>
+                Iniciar Sesión
+              </IonCardTitle>
             </IonCardHeader>
 
             <IonCardContent>
+              <br/>
+              <br/>
               <IonItem>
                 <IonInput
                   required
@@ -100,10 +98,11 @@ const Login: React.FC = () => {
                 ></IonInput>
               </IonItem>
 
+
               <IonItem>
                 <IonInput
                   required
-                  type="text"
+                  type="password"
                   placeholder="Contraseña"
                   onIonChange={(e: any) => setPasswordEvent(e)}
                 ></IonInput>
@@ -111,6 +110,7 @@ const Login: React.FC = () => {
               <br />
               <br />
               <br />
+
 
               <IonRow>
                 <IonCol size="1"></IonCol>
