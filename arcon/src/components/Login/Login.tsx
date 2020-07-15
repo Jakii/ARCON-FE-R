@@ -12,9 +12,15 @@ import {
   IonCardTitle,
   IonCardContent,
   IonToast,
+  IonLabel,
+  IonFooter,
+  IonContent,
 } from "@ionic/react";
 import "./../../theme/variables.css";
-import "./Login.css";
+import "./../../theme/input.css";
+import "./../../theme/label.css";
+import "./../../theme/button.css";
+import "./../../theme/card.css";
 import { UserContext } from "../../App";
 import API from "./../../axios/axiosAPI.js";
 import Register from "../Register/Register";
@@ -22,19 +28,19 @@ import Register from "../Register/Register";
 const Login: React.FC = () => {
   const [username, setUsername] = useState("gtabora");
   const [password, setPassword] = useState("Minato30.");
+  const [email, setEmail]=useState("gabiisa03@gmail.com");
   const user = useContext(UserContext);
   const [isRegister, setIsRegister] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
   const loginUser = () => {
-  
-    if(username===''||password===''){
-      setToastMessage('Ingrese su correo o contraseña');
+    if (username === "" || password === ""||email==="") {
+      setToastMessage("Debes llenar todos los campos.");
       setShowToast(true);
       return;
     }
-    const url = "UserApp/Login?UserName=" + username + "&Password=" + password;
+    const url = "UserApp/Login?UserName=" + username + "&Password=" + password+"&email="+email;
     API.get(url).then((res) => {
       if (res.data.succeeded) {
         user.setUserInfo(res.data.data.userApp);
@@ -70,34 +76,45 @@ const Login: React.FC = () => {
         position="top"
       />
       {!isRegister ? (
-        <IonGrid style={{ backgroundColor: "#011627", width: "100%" }}>
-          <br/>
-          <br/>
-          <IonCard>
+        <IonGrid style={{ backgroundColor: "#00A6FB", width: "100%" }}>
+          <IonCard className="cardCenter">
             <IonCardHeader>
-              <IonImg
+              {/* <IonImg
                 src="../../assets/Arcon.png"
                 style={{ height: "180px" }}
-              />
-             
+              /> */}
+
               <br />
               <IonCardTitle style={{ textAlign: "center" }}>
-                Iniciar Sesión
+                <IonLabel className="title">¡Hola!</IonLabel>
+                <br />
+                <IonLabel className="subtitle">
+                  Inicia sesión con tu cuenta
+                </IonLabel>
               </IonCardTitle>
             </IonCardHeader>
 
             <IonCardContent>
-              <br/>
-              <br/>
+              <br />
+              <br />
+              <IonItem>
+                <IonInput
+                  required
+                  type="text"
+                  placeholder="Correo electrónico"
+                  onIonChange={(e: any) => setUsernameEvent(e)}
+                  className="inputText"
+                ></IonInput>
+              </IonItem>
               <IonItem>
                 <IonInput
                   required
                   type="text"
                   placeholder="Usuario"
                   onIonChange={(e: any) => setUsernameEvent(e)}
+                  className="inputText"
                 ></IonInput>
               </IonItem>
-
 
               <IonItem>
                 <IonInput
@@ -105,13 +122,11 @@ const Login: React.FC = () => {
                   type="password"
                   placeholder="Contraseña"
                   onIonChange={(e: any) => setPasswordEvent(e)}
+                  className="inputText"
                 ></IonInput>
               </IonItem>
               <br />
               <br />
-              <br />
-
-
               <IonRow>
                 <IonCol size="1"></IonCol>
                 <IonCol size="10">
@@ -120,19 +135,28 @@ const Login: React.FC = () => {
                     expand="block"
                     fill="solid"
                     onClick={loginUser}
+                    className="normalButton"
                   >
                     Iniciar Sesión
                   </IonButton>
-
-                  <IonButton
+                </IonCol>
+              </IonRow>
+              <br />
+              <IonRow>
+                <IonLabel className="subtitle2">
+                  ¿No tienes una cuenta?{" "}              
+                </IonLabel>
+              </IonRow>
+              <IonRow>
+              <IonButton
                     color="orange"
-                    expand="block"
-                    fill="solid"
+                    fill="clear"
                     onClick={goToRegister}
+                    className="buttonLink"
+                    expand="full"
                   >
                     Registrarme
                   </IonButton>
-                </IonCol>
               </IonRow>
             </IonCardContent>
           </IonCard>

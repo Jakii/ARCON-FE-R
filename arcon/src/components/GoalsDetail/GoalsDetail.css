@@ -2,14 +2,6 @@
     display: flex;
 }
 
-.title{
-    font-size: 40px;
-}
-
-.subtitle{
-    font-size: 18px;
-}
-
 .circleProgressBar{
     height: 150px;
     width: 100%;
@@ -22,7 +14,7 @@
 }
 
 .taskTitle{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     vertical-align: middle;
     margin-top: 20px;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -16,6 +15,7 @@ import NewGoal from "./../components/GoalsList/NewGoal";
 import { add } from "ionicons/icons";
 import API from "./../axios/axiosAPI.js";
 import { UserContext } from "../App";
+import '../theme/label.css';
 
 const Goals: React.SFC = () => {
   const [showDetailComponent, setShowDetailComponent] = useState(false);
@@ -23,7 +23,7 @@ const Goals: React.SFC = () => {
   const [goals, setGoals] = useState(Array());
   const user = useContext(UserContext);
 
-  const getGoals = () => {
+  function getGoals(){
     const id = user.profileSelected.userProfileId;
     API.get("Goals/GetByUserProfileId?userProfileId=" + id).then((res) => {
       if (res.data.data != null) {
@@ -46,28 +46,6 @@ const Goals: React.SFC = () => {
     getGoals();
   }, []);
 
-  // const goalsList = [
-  //   {
-  //     GoalId: 2,
-  //     ProfileId: 1,
-  //     Profile: "Gaby",
-  //     title: "Viaje a Disney",
-  //     description: "",
-  //     amount: 50000,
-  //     progress: 50,
-  //     StatusId: 1,
-  //     Activities: [
-  //       {
-  //         ActivityId: 1,
-  //         Name: "Arreglar mi habitación"
-  //       },
-  //       {
-  //         ActivityId: 2,
-  //         Name: "Sacar la basura"
-  //       }
-  //     ]
-  //   }
-  // ];
 
   const addNewGoal = () => {
     setShowNewGoal(true);
@@ -79,6 +57,7 @@ const Goals: React.SFC = () => {
     amount: number,
     profile: string
   ) => {
+    debugger;
     var newGoal = {
       title: name,
       description: description,
@@ -86,11 +65,12 @@ const Goals: React.SFC = () => {
       amount: amount,
       progress: 0,
       statusId: 1,
-      // Activities: []
     };
 
     API.post("Goal", newGoal).then((res) => {
+      debugger;
       if (res.status === 200) {
+        debugger;
         getGoals();
       }
     });
@@ -104,7 +84,7 @@ const Goals: React.SFC = () => {
             <IonIcon slot="icon-only" icon={add} />
           </IonButton>
         </IonButtons>
-        <IonTitle size="large" color="purple">Metas</IonTitle>
+        <IonTitle size="large" color="purple" className="toolbarTitle">Metas</IonTitle>
       </IonToolbar>
       <IonContent>
         <GoalsList List={goals} GetGoals={getGoals} />

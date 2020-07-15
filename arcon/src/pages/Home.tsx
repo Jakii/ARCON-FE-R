@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { IonHeader, IonIcon, IonTitle, IonToolbar, IonButtons, IonButton, IonPage, IonContent, IonToast } from '@ionic/react';
-import './Home.css';
+import { IonIcon, IonTitle, IonToolbar, IonButtons, IonButton, IonPage, IonContent, IonToast } from '@ionic/react';
 import Perfiles from './../components/Perfiles/Perfiles';
-import { add, filter } from 'ionicons/icons';
+import { add } from 'ionicons/icons';
 import NewProfile from './../components/Perfiles/NewProfile';
 import API from './../axios/axiosAPI.js';
 import { UserContext } from '../App';
+import '../theme/label.css';
+import '../theme/button.css';
 
 type HomeProps = {
 }
@@ -43,14 +44,19 @@ const Home: React.SFC<HomeProps> = ({ }) => {
   }
 
 
-  const saveNewProfile = (name: any) => {
+  const saveNewProfile = (name: any, date:Date, code:number, username:any) => {
     var newProfile = {
       name: name,
       rolId: 2,
       userAppId: user.userInfo.userId,
-      isActive:true
+      isActive:true,
+      birthDate:date,
+      userName:username,
+      accessCode:code
     };
+    debugger;
     API.post('UserProfile', newProfile).then(res=>{
+      debugger;
         if(res.status===200){
           updateProfiles();
           setMessageToast('Perfil creado correctamente');
@@ -76,10 +82,10 @@ const Home: React.SFC<HomeProps> = ({ }) => {
        <IonToolbar>
           <IonButtons slot="primary">
             <IonButton onClick={() => addNewProfile()}>
-              <IonIcon slot="icon-only" icon={add} />
+              <IonIcon slot="icon-only" icon={add}  color="purple"/>
             </IonButton>
           </IonButtons>
-          <IonTitle size="large" color="purple">Perfiles</IonTitle>
+          <IonTitle size="large" color="purple" className="toolbarTitle">Perfiles</IonTitle>
 
         </IonToolbar>
       <IonContent>

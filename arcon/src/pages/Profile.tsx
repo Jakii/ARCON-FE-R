@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -9,11 +8,10 @@ import {
   IonIcon,
   IonLabel,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Profile.css";
+import '../theme/label.css';
 import {
   chevronForwardOutline,
-  person,
   personOutline,
   peopleOutline,
   logOutOutline,
@@ -46,7 +44,7 @@ const Profile: React.SFC<ProfileProps> = ({ User, SetUser }) => {
         SetShowModalP={setShowProfileSettings}
       />
       <IonToolbar>
-          <IonTitle size="large">Mi cuenta</IonTitle>
+          <IonTitle size="large" color="purple" className="toolbarTitle">Mi cuenta</IonTitle>
         </IonToolbar>
       <IonContent>
         <br />

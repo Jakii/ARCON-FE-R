@@ -1,0 +1,13 @@
+.normalButton {
+  height: 45px;
+  font-weight: bolder;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.buttonLink{
+    font-weight: normal;
+    font-size: 15px;
+    text-transform: capitalize;
+    width: 100%;
+}

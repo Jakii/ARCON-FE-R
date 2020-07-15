@@ -9,6 +9,9 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { documentTextOutline } from "ionicons/icons";
+import "../../theme/label.css";
+import "../../theme/button.css";
+import "../../theme/input.css";
 
 type NewActivityProps = {
   ShowModal: any;
@@ -47,13 +50,14 @@ const NewGoal: React.FC<NewActivityProps> = ({
               placeholder="Nombre de la tarea"
               autofocus={true}
               onIonChange={(e) => setNameEvent(e)}
+              className="inputText"
             ></IonInput>
         </IonItem>
       </IonContent>
-      <IonButton onClick={() => save()} color="green">
+      <IonButton onClick={() => save()} color="green" className="normalButton">
         Guardar
       </IonButton>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton onClick={() => SetShowModal(false)} color="lightblue" className="normalButton">
         Regresar
       </IonButton>
     </IonModal>

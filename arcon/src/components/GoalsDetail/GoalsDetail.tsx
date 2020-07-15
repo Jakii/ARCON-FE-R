@@ -12,15 +12,13 @@ import {
   IonCard,
   IonCardContent,
   IonToast,
-  useIonViewWillEnter,
   IonCardHeader,
-  IonCardTitle,
   IonIcon,
+  IonProgressBar
 } from "@ionic/react";
-import "./GoalsDetail.css";
+import "../../theme/label.css";
+import "../../theme/button.css";
 import NewActivity from "./../Activities/NewActivity";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 import API from "./../../axios/axiosAPI.js";
 import { add } from "ionicons/icons";
 
@@ -32,7 +30,8 @@ type GoalsProps = {
   TotalCompletedActivities: number;
   SetTotalPendingActivities: Function;
   SetTotalCompletedActivities: Function;
-  GetGoals: Function;
+  Activities:any;
+  SetActivities:Function;
 };
 
 const GoalsDetail: React.FC<GoalsProps> = ({
@@ -43,7 +42,8 @@ const GoalsDetail: React.FC<GoalsProps> = ({
   TotalPendingActivities,
   SetTotalCompletedActivities,
   SetTotalPendingActivities,
-  GetGoals,
+  Activities,
+  SetActivities
 }) => {
   const [showNewActivity, setShowNewActivity] = useState(false);
   const [goal, SetGoal] = useState(Goal);
@@ -51,56 +51,27 @@ const GoalsDetail: React.FC<GoalsProps> = ({
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const renderPendingActivities =
-    Goal &&
-    Goal.goalDetails &&
-    Goal.goalDetails
-      .filter((y: any) => {
-        return y.isComplete === false;
-      })
-      .map((x: any) => {
-        return (
-          <IonItem>
-            <IonLabel>{x.name}</IonLabel>
-            <IonCheckbox
-              slot="end"
-              color="secondary"
-              onIonChange={(e) => changePercent(e.detail.checked, x)}
-            ></IonCheckbox>
-          </IonItem>
-        );
-      });
+  function reloadActivities(){
+    API.get("GoalDetail/GetByGoalId?goalId="+Goal.goalId).then(res=>{
+      if(res.status===200){
+        SetActivities(res.data.data);
+      }
+    })
+  }
 
   const renderActivities =
-    Goal &&
-    Goal.goalDetails &&
-    Goal.goalDetails.map((x: any) => {
+   Activities&&Activities.map((x: any) => {
       return (
         <IonCard
           color={x.isComplete ? "green" : undefined}
           onClick={(e: any) => changePercent(e, x)}
         >
           <IonCardHeader>
-          <IonLabel className="taskTitle">{x.name}</IonLabel>
+            <IonLabel className="taskTitle">{x.name}</IonLabel>
           </IonCardHeader>
         </IonCard>
       );
     });
-
-  const renderDoneActivities =
-    Goal &&
-    Goal.goalDetails &&
-    Goal.goalDetails
-      .filter((y: any) => {
-        return y.isComplete === true;
-      })
-      .map((x: any) => {
-        return (
-          <IonItem>
-            <IonLabel>{x.name}</IonLabel>
-          </IonItem>
-        );
-      });
 
   const addNewActivity = () => {
     setShowNewActivity(true);
@@ -132,18 +103,16 @@ const GoalsDetail: React.FC<GoalsProps> = ({
   }
 
   function CalculatePercent() {
-    var totalActivities = Goal && Goal.goalDetails && Goal.goalDetails.length;
+    var totalActivities = Activities && Activities.length;
     var totInProcess =
-      Goal &&
-      Goal.goalDetails &&
-      Goal.goalDetails.filter((x: any) => {
+      Activities &&
+      Activities.filter((x: any) => {
         return x.isComplete === false;
       }).length;
 
     var totalActivitiesTrue =
-      Goal &&
-      Goal.goalDetails &&
-      Goal.goalDetails.filter((x: any) => {
+    Activities &&
+    Activities.filter((x: any) => {
         return x.isComplete === true;
       }).length;
     SetTotalPendingActivities(totInProcess);
@@ -161,15 +130,13 @@ const GoalsDetail: React.FC<GoalsProps> = ({
     API.post("GoalDetail", newActivity).then((res) => {
       if (res.data.succeeded) {
         setToastMessage("Se ha creado exitosamente.");
-        Goal.goalDetails.push(newActivity);
+        reloadActivities();
       } else {
         setToastMessage(res.data.message);
       }
       setShowToast(true);
     });
   };
-
-  
 
   const completeGoal = () => {
     Goal.statusId = 3;
@@ -187,50 +154,36 @@ const GoalsDetail: React.FC<GoalsProps> = ({
         position="top"
       />
       <IonContent>
+        <br/>
+        <IonLabel class="titleGoalDetail" color="purple">
+          {Goal.title}
+        </IonLabel>
         <br />
-
-        <IonCard>
-          <br />
-
-          <IonLabel class="title" color="purple">
-            {Goal.title}
-          </IonLabel>
-
-          <IonCardContent>
-            <IonRow>
-              <IonCol size="5" className="ion-text-center">
-                <IonLabel className="tasks" color="orange">
-                  {TotalPendingActivities}
-                </IonLabel>
-                <br />
-                <IonLabel className="subtitleInformation">En proceso</IonLabel>
-                <br />
-                <IonLabel className="tasks" color="darkPurple">
-                  {TotalCompletedActivities}
-                </IonLabel>
-                <br />
-                <IonLabel className="subtitleInformation">Completadas</IonLabel>
-              </IonCol>
-
-              <IonCol size="7">
-                <CircularProgressbar
-                  value={Goal.progress}
-                  text={`${Goal.progress}%`}
-                  styles={buildStyles({
-                    pathColor: "#2dd36f",
-                  })}
-                  className="circleProgressBar"
-                />
-              </IonCol>
-            </IonRow>
-          </IonCardContent>
-        </IonCard>
         <br />
+        <br />
+        <IonRow>
+          <IonCol size="1"></IonCol>
+          <IonCol size="7">
+            <IonLabel className="score" color="purple">{Goal.progress}%</IonLabel>
+            <IonProgressBar
+              color="gold"
+              value={Goal.progress/100}
+              style={{ marginTop: "8%", height: "15px", borderRadius: "14px" }}
+            ></IonProgressBar>
+          </IonCol>
+          <IonCol size="3">
+            <img
+              src="../../assets/avatars/001-chest.png"
+              style={{ marginLeft: "10px" }}
+            />
+          </IonCol>
+        </IonRow>
+
         <IonCard>
           <IonGrid>
             <br />
             <IonItem lines="none">
-              <IonLabel style={{ fontSize: "24px" }}>Tareas</IonLabel>
+              <IonLabel style={{fontSize:"30px"}} color="purple">Tareas</IonLabel>
               <IonButton onClick={() => addNewActivity()} fill="clear">
                 <IonIcon slot="icon-only" icon={add} size="large" />
               </IonButton>
@@ -245,18 +198,19 @@ const GoalsDetail: React.FC<GoalsProps> = ({
           SaveNewActivity={saveNewActivity}
         />
       </IonContent>
-      {/* <IonButton
-        ion-button
-        icon-start
-        color="lightpurple"
-        onClick={() => addNewActivity()}
+
+      <IonButton
+        onClick={() => completeGoal()}
+        color="orange"
+        className="normalButton"
       >
-        Nueva Tarea
-      </IonButton> */}
-      <IonButton onClick={() => completeGoal()} color="orange">
         Acreditar puntos
       </IonButton>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton
+        onClick={() => SetShowModal(false)}
+        color="lightblue"
+        className="normalButton"
+      >
         Regresar
       </IonButton>
     </IonModal>

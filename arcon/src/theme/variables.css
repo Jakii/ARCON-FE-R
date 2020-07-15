@@ -82,7 +82,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-purple-shade: #130b23;
   --ion-color-purple-tint: #2d243e;
 
-  --ion-color-darkblue: #011627;
+  --ion-color-darkblue: #9cc7eb;
   --ion-color-darkblue-rgb: 1,22,39;
   --ion-color-darkblue-contrast: #ffffff;
   --ion-color-darkblue-contrast-rgb: 255,255,255;
@@ -105,7 +105,7 @@ http://ionicframework.com/docs/theming/ */
 
   --ion-color-green: #98CE00;
   --ion-color-green-rgb: 152,206,0;
-  --ion-color-green-contrast: #000000;
+  --ion-color-green-contrast: white;
   --ion-color-green-contrast-rgb: 0,0,0;
   --ion-color-green-shade: #86b500;
   --ion-color-green-tint: #a2d31a;
@@ -123,6 +123,54 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-lightpurple-contrast-rgb: 0,0,0;
   --ion-color-lightpurple-shade: #a2a4b6;
   --ion-color-lightpurple-tint: #bfc1d4;
+
+  --ion-color-gold: #FFD700;
+  --ion-color-gold-rgb: 255,215,0;
+  --ion-color-gold-contrast: #000000;
+  --ion-color-gold-contrast-rgb: 0,0,0;
+  --ion-color-gold-shade: #e0bd00;
+  --ion-color-gold-tint: #ffdb1a;
+
+  --ion-color-platinum: #EBEBEB;
+  --ion-color-platinum-rgb: 235,235,235;
+  --ion-color-platinum-contrast: #000000;
+  --ion-color-platinum-contrast-rgb: 0,0,0;
+  --ion-color-platinum-shade: #cfcfcf;
+  --ion-color-platinum-tint: #ededed;
+
+  --ion-color-steelblue: #B7CCEB;
+  --ion-color-steelblue-rgb: 183,204,235;
+  --ion-color-steelblue-contrast: #000000;
+  --ion-color-steelblue-contrast-rgb: 0,0,0;
+  --ion-color-steelblue-shade: #a1b4cf;
+  --ion-color-steelblue-tint: #bed1ed;
+}
+
+.ion-color-steelblue {
+  --ion-color-base: var(--ion-color-steelblue);
+  --ion-color-base-rgb: var(--ion-color-steelblue-rgb);
+  --ion-color-contrast: var(--ion-color-steelblue-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-steelblue-contrast-rgb);
+  --ion-color-shade: var(--ion-color-steelblue-shade);
+  --ion-color-tint: var(--ion-color-steelblue-tint);
+}
+
+.ion-color-platinum {
+  --ion-color-base: var(--ion-color-platinum);
+  --ion-color-base-rgb: var(--ion-color-platinum-rgb);
+  --ion-color-contrast: var(--ion-color-platinum-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-platinum-contrast-rgb);
+  --ion-color-shade: var(--ion-color-platinum-shade);
+  --ion-color-tint: var(--ion-color-platinum-tint);
+}
+
+.ion-color-gold {
+  --ion-color-base: var(--ion-color-gold);
+  --ion-color-base-rgb: var(--ion-color-gold-rgb);
+  --ion-color-contrast: var(--ion-color-gold-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gold-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gold-shade);
+  --ion-color-tint: var(--ion-color-gold-tint);
 }
 
 .ion-color-lightpurple {

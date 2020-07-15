@@ -5,17 +5,15 @@ import {
   IonContent,
   IonLabel,
   IonInput,
-  IonSelect,
-  IonSelectOption,
   IonIcon,
-  IonItem,
+  IonItem
 } from "@ionic/react";
-import "./NewGoal.css";
+import "../../theme/label.css";
+import "../../theme/input.css";
+import "../../theme/button.css";
 import {
   golfOutline,
   documentTextOutline,
-  cashOutline,
-  peopleOutline,
   starOutline,
 } from "ionicons/icons";
 import { UserContext } from "../../App";
@@ -34,11 +32,10 @@ const NewGoal: React.FC<NewGoalProps> = ({
   const [name, setName] = useState<string>();
   const [description, setDescription] = useState<string>();
   const [amount, setAmount] = useState<number>(0);
-  const [profile, setProfile] = useState<string>();
   const user = useContext(UserContext);
 
   const save = () => {
-    SaveNewGoal(name, description, amount, profile);
+    SaveNewGoal(name, description, amount, user.profileSelected.userProfileId);
     SetShowModal(false);
   };
   return (
@@ -50,12 +47,13 @@ const NewGoal: React.FC<NewGoalProps> = ({
         <br />
         <br />
         <br />
+    
         <IonItem>
           <IonIcon icon={golfOutline} slot="start" />
           <IonInput
             placeholder="Nombre de la meta"
             autofocus={true}
-            // color="lightblue"
+            className="inputText"
             onIonChange={(e) => setName(e.detail.value!)}
           ></IonInput>
         </IonItem>
@@ -64,7 +62,7 @@ const NewGoal: React.FC<NewGoalProps> = ({
           <IonInput
             placeholder="Descripcion"
             autofocus={true}
-            // color="lightblue"
+            className="inputText"
             onIonChange={(e) => setDescription(e.detail.value!)}
           ></IonInput>
         </IonItem>
@@ -73,13 +71,13 @@ const NewGoal: React.FC<NewGoalProps> = ({
           <IonInput
             placeholder="Puntos"
             autofocus={true}
-            // color="lightblue"
+            className="inputText"
             onIonChange={(e) => setAmount(parseFloat(e.detail.value!))}
           ></IonInput>
         </IonItem>
-        <IonItem>
+        {/* <IonItem>
           <IonIcon icon={peopleOutline} slot="start" />
-          <IonLabel color="purple">Perfil a asignar: </IonLabel>
+          <IonLabel color="purple" className="subtitle2">Perfil a asignar: </IonLabel>
           <IonSelect
             value={profile}
             placeholder="Seleccionar perfil a asignar"
@@ -93,15 +91,15 @@ const NewGoal: React.FC<NewGoalProps> = ({
               );
             })}
           </IonSelect>
-        </IonItem>
+        </IonItem> */}
       </IonContent>
       {/* <IonButton onClick={() => save()} color="orange">
           Seleccionar Foto
         </IonButton> */}
-      <IonButton onClick={() => save()} color="green">
+      <IonButton onClick={() => save()} color="green" className="normalButton">
         Guardar
       </IonButton>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton onClick={() => SetShowModal(false)} color="lightblue" className="normalButton">
         Regresar
       </IonButton>
     </IonModal>

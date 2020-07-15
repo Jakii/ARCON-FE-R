@@ -6,7 +6,7 @@ import {
   IonLabel,
   IonRow,
 } from "@ionic/react";
-import "./Register.css";
+import "./../../theme/label.css"; 
 
 type ConditionsProps = {
   ShowModal: any;

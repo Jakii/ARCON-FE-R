@@ -18,11 +18,13 @@ import {
   useIonViewWillEnter,
   IonSearchbar,
   IonList,
+  IonImg,
 } from "@ionic/react";
 import { UserContext } from "../App";
 import HistoryList from "../components/History/HistoryList";
 import API from "./../axios/axiosAPI.js";
 import { starOutline } from "ionicons/icons";
+import '../theme/label.css';
 
 type HistoryProps = {};
 
@@ -68,28 +70,26 @@ const Home: React.SFC<HistoryProps> = ({}) => {
   return (
     <IonPage>
       <IonToolbar>
-        <IonTitle size="large">Historial</IonTitle>
+        <IonTitle size="large" className="toolbarTitle" color="purple">Historial</IonTitle>
       </IonToolbar>
       <IonContent>
         <IonCard color="darkblue">
           <IonCardHeader>
-            <IonCardTitle>Puntos:</IonCardTitle>
+            <IonCardTitle>Arcomonedas:</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            
-           <IonItem lines="none" color="purple">
+       
+           <IonItem lines="none" color="darkblue">
+             <IonImg src="../../assets/avatars/2.png" slot="start" style={{width:"60px", height:"60px"}}></IonImg>
            <IonLabel
               style={{
                 fontSize: "56px",
                 fontWeight: "bolder",
-                // marginLeft: "25%",
                 width:"100%",
-                textAlign:"center"
+                textAlign:"left"
               }}
             >
-              <IonIcon slot="start" icon={starOutline} size="large" />
               {total}
-              <IonIcon slot="start" icon={starOutline} size="large" />
             </IonLabel>
            </IonItem>
           </IonCardContent>

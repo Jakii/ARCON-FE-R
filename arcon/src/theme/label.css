@@ -1,0 +1,71 @@
+.title{
+    font-size: 30px;
+    text-align: center;
+    color: #160C28;
+    font-weight: bolder;
+}
+
+.date{
+    font-weight: bolder;
+    color: #02182B;
+    font-size: 18px;
+}
+
+.notes{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.titleGoal{
+    font-size: 30px;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+
+.titleGoalDetail{
+    font-size: 35px;
+    text-align: center;
+    color: #160C28;
+    font-weight: bolder;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.subtitle{
+    font-size: 16px;
+    text-align: center;
+    color: #160C28;
+    font-weight: bolder;
+}
+
+.subtitle2{
+    font-size: 15px;
+    text-align: center;
+    color: #160C28;
+    font-weight: bolder;
+    width: 100%;
+}
+
+.terminosYCondiciones{
+    font-weight: bolder;
+}
+
+.toolbarTitle{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.names{
+    font-size: 30px;
+    font-weight: bolder; 
+}
+
+.score{
+    width: 100%;
+    text-align: right;
+    font-size: 30px;
+}
+
+.task{
+    font-size: 30px;
+}

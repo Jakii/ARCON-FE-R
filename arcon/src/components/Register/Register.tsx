@@ -21,7 +21,9 @@ import {
   callOutline,
   lockClosedOutline,
 } from "ionicons/icons";
-import "./Register.css";
+import "./../../theme/input.css";
+import "./../../theme/label.css"; 
+import "./../../theme/button.css"; 
 import API from "./../../axios/axiosAPI.js";
 import Conditions from "./Conditions";
 
@@ -143,7 +145,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
         style={{ height: "180px", marginLeft: "14px" }}
       />
       <br />
-      <IonLabel color="purple" class="title">
+      <IonLabel className="title">
         Registrarme
       </IonLabel>
       <br />
@@ -158,7 +160,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 autofocus={true}
                 required
                 onIonChange={(e) => setUserNameEvent(e)}
-                className="background-input"
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -172,6 +174,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 placeholder="Nombres"
                 required
                 onIonChange={(e) => setFirstnameEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -182,6 +185,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 placeholder="Apellidos"
                 required
                 onIonChange={(e) => setLastnameEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -195,6 +199,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 type="email"
                 required
                 onIonChange={(e) => setEmailEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -208,6 +213,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 type="date"
                 required
                 onIonChange={(e) => setDateOfBirthEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -222,6 +228,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 type="number"
                 required
                 onIonChange={(e) => setPhoneNumberEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -236,6 +243,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 type="password"
                 required
                 onIonChange={(e) => setPasswordEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -250,6 +258,7 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
                 type="password"
                 required
                 onIonChange={(e) => setPasswordConfirmationEvent(e)}
+                className="inputText"
               ></IonInput>
             </IonItem>
           </IonCol>
@@ -274,10 +283,10 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
           onClick={(e: any) => goToConditions(e)}
         />
       </IonItem>
-      <IonButton onClick={() => save()} color="green">
+      <IonButton onClick={() => save()} color="green" className="normalButton"> 
         Guardar
       </IonButton>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton onClick={() => SetShowModal(false)} color="lightblue" className="normalButton">
         Regresar
       </IonButton>
     </IonModal>
