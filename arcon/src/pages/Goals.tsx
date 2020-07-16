@@ -57,7 +57,6 @@ const Goals: React.SFC = () => {
     amount: number,
     profile: string
   ) => {
-    debugger;
     var newGoal = {
       title: name,
       description: description,
@@ -68,7 +67,6 @@ const Goals: React.SFC = () => {
     };
 
     API.post("Goal", newGoal).then((res) => {
-      debugger;
       if (res.status === 200) {
         debugger;
         getGoals();
@@ -80,9 +78,9 @@ const Goals: React.SFC = () => {
     <IonPage>
       <IonToolbar>
         <IonButtons slot="primary">
-          <IonButton onClick={() => addNewGoal()}>
+         {user.userInfo.rolId===1? <IonButton onClick={() => addNewGoal()}>
             <IonIcon slot="icon-only" icon={add} />
-          </IonButton>
+          </IonButton>:<></>}
         </IonButtons>
         <IonTitle size="large" color="purple" className="toolbarTitle">Metas</IonTitle>
       </IonToolbar>

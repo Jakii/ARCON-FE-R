@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "Arcón",
+  "appId": "com.arcon.app",
+  "appName": "arcon",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",

@@ -34,9 +34,10 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
             animationIn="bounceInLeft"
             animationOut="fadeOut"
             isVisible={true}
+            animationInDuration={1000}
           >
             <IonCard
-              color={x.rolId == 1 ? "orange" : "lightblue"}
+              color={x.rolId == 1 ? "orange" : "lapiz"}
               routerLink="/goals"
               onClick={() => goToHome(x)}
               style={{ width: "90%", marginLeft: "5%" }}
@@ -91,7 +92,7 @@ const Perfiles: React.FC<ProfileProps> = ({ ListaPerfiles }) => {
 
   return (
     <>
-      <IonImg src="../../assets/ahorro.jpg" class="imagen" />
+      <IonImg src="../../assets/ArconFinal.png" style={{height:"300px", width:"100%"}} />
       {renderProfiles()}
     </>
   );

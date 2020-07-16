@@ -12,6 +12,7 @@ import {
   IonImg,
 } from "@ionic/react";
 import "./../GoalsDetail/GoalsDetail.css";
+import "../../theme/button.css";
 import { UserContext } from "../../App";
 
 type PersonalInformationProps = {
@@ -29,7 +30,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
       <IonContent>
         <br/>
       <IonImg
-          src="../../assets/settingProfile.png"
+          src="../../assets/ArconFinal.png"
           style={{ height: "250px", width: "100%" }}
 
         />
@@ -78,18 +79,10 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
               </IonCol>
             </IonRow>
 
-            {/* <IonRow>
-            <IonCol size="5">
-              <IonLabel class="subtitleInformation">Phone Number: </IonLabel>
-            </IonCol>
-            <IonCol size="5">
-              <IonLabel class="subtitle">{user.userInfo.phoneNumber}</IonLabel>
-            </IonCol>
-          </IonRow> */}
           </IonGrid>
         </IonCard>
       </IonContent>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue">
+      <IonButton onClick={() => SetShowModal(false)} color="lightblue" className="normalButton">
         Regresar
       </IonButton>
     </IonModal>

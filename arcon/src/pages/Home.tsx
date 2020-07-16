@@ -23,12 +23,13 @@ const Home: React.SFC<HomeProps> = ({ }) => {
     setProfiles(user.profiles);
   }
 
-  const updateProfiles=()=>{
+  function updateProfiles(){
     API.get('UserProfile').then(res=>{
       if(res.status===200){
         var filterProfiles=res.data.data.filter((x:any)=>{
-          return x.userAppId===user.userInfo.userId
+          return x.userAppId===user.userInfo.userId&&x.isActive===true
         });
+        debugger;
         setProfiles(filterProfiles);
         user.profiles=filterProfiles;
       }
@@ -55,8 +56,7 @@ const Home: React.SFC<HomeProps> = ({ }) => {
       accessCode:code
     };
     debugger;
-    API.post('UserProfile', newProfile).then(res=>{
-      debugger;
+    API.post('UserProfile?tipoDePerfil="child"', newProfile).then(res=>{
         if(res.status===200){
           updateProfiles();
           setMessageToast('Perfil creado correctamente');
@@ -81,9 +81,9 @@ const Home: React.SFC<HomeProps> = ({ }) => {
       />
        <IonToolbar>
           <IonButtons slot="primary">
-            <IonButton onClick={() => addNewProfile()}>
+           {user.userInfo.rolId===1? <IonButton onClick={() => addNewProfile()}>
               <IonIcon slot="icon-only" icon={add}  color="purple"/>
-            </IonButton>
+            </IonButton>:<></>}
           </IonButtons>
           <IonTitle size="large" color="purple" className="toolbarTitle">Perfiles</IonTitle>
 

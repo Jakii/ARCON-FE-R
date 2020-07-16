@@ -45,7 +45,7 @@ const Login: React.FC = () => {
       if (res.data.succeeded) {
         user.setUserInfo(res.data.data.userApp);
         user.userInfo = res.data.data.userApp;
-        user.profiles = res.data.data.userProfiles;
+        user.profiles = res.data.data.userProfiles.filter((x:any)=>{return x.isActive===true});
         user.setIsLoggedIn(true);
       } else {
         setToastMessage(res.data.message);
@@ -66,6 +66,10 @@ const Login: React.FC = () => {
     setPassword(e.target.value);
   };
 
+  const setEmailEvent = (e: any) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <>
       <IonToast
@@ -79,10 +83,10 @@ const Login: React.FC = () => {
         <IonGrid style={{ backgroundColor: "#00A6FB", width: "100%" }}>
           <IonCard className="cardCenter">
             <IonCardHeader>
-              {/* <IonImg
-                src="../../assets/Arcon.png"
+              <IonImg
+                src="../../assets/ArconFinal.png"
                 style={{ height: "180px" }}
-              /> */}
+              />
 
               <br />
               <IonCardTitle style={{ textAlign: "center" }}>
@@ -102,7 +106,7 @@ const Login: React.FC = () => {
                   required
                   type="text"
                   placeholder="Correo electrónico"
-                  onIonChange={(e: any) => setUsernameEvent(e)}
+                  onIonChange={(e: any) => setEmailEvent(e)}
                   className="inputText"
                 ></IonInput>
               </IonItem>

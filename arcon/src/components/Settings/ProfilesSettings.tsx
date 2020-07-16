@@ -15,12 +15,14 @@ import {
   IonItemOptions,
   IonNote,
   IonIcon,
+  IonToast,
 } from "@ionic/react";
 import { UserContext } from "../../App";
 import { Animated } from "react-animated-css";
 import "../../theme/label.css";
 import "../../theme/button.css";
-import { trashOutline } from "ionicons/icons";
+import { trashOutline, appsOutline } from "ionicons/icons";
+import API from "./../../axios/axiosAPI.js";
 
 type ProfileSettingsProps = {
   ShowModalP: any;
@@ -32,11 +34,41 @@ const ProfileSettings: React.FC<ProfileSettingsProps> = ({
   SetShowModalP,
 }) => {
   const user = useContext(UserContext);
+  const [showToast, setShowToast]=useState(false);
+  const [message, setMessage]=useState("");
+  const [profiles,setProfiles]=useState(user.profiles);
+
+  const disableProfile = (e: any, profile: any) => {
+    API.post(
+      "UserProfile/DisableProfile?profileId=" + profile.userProfileId
+    ).then((res) => {
+      if (res.status === 200) {
+        setMessage(res.data.message);
+        setShowToast(true);
+        updateProfiles();
+      } else {
+        setMessage(res.data.message);
+        setShowToast(true);
+      }
+    });
+  };
+
+  const updateProfiles=()=>{
+    API.get('UserProfile').then(res=>{
+      if(res.status===200){
+        var filterProfiles=res.data.data.filter((x:any)=>{
+          return x.userAppId===user.userInfo.userId&&x.isActive===true
+        });
+        user.profiles=filterProfiles;
+        setProfiles(user.profiles);
+      }
+    })
+  }
 
   const renderProfiles = () => {
     return (
-      user.profiles &&
-      user.profiles.map((x: any, index: number) => {
+      profiles &&
+      profiles.map((x: any, index: number) => {
         return (
           <Animated
             animationIn="bounceInLeft"
@@ -44,7 +76,7 @@ const ProfileSettings: React.FC<ProfileSettingsProps> = ({
             isVisible={true}
           >
             <IonItemSliding>
-              <IonItem lines="none">
+              <IonItem lines="none" onClick={(e: any) => disableProfile(e, x)}>
                 <p>
                   <IonText color="purple">{index + 1}- </IonText>
                   <IonText className="subtitle">{x.name}</IonText>
@@ -62,6 +94,13 @@ const ProfileSettings: React.FC<ProfileSettingsProps> = ({
   };
   return (
     <IonModal isOpen={ShowModalP}>
+       <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message={message}
+        duration={2000}
+        position="top"
+      />
       <IonContent>
         <IonLabel color="purple" className="title">
           Perfiles

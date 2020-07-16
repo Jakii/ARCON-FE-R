@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   IonModal,
   IonButton,
@@ -21,6 +21,7 @@ import "../../theme/button.css";
 import NewActivity from "./../Activities/NewActivity";
 import API from "./../../axios/axiosAPI.js";
 import { add } from "ionicons/icons";
+import { UserContext } from "../../App";
 
 type GoalsProps = {
   Goal: any;
@@ -47,7 +48,7 @@ const GoalsDetail: React.FC<GoalsProps> = ({
 }) => {
   const [showNewActivity, setShowNewActivity] = useState(false);
   const [goal, SetGoal] = useState(Goal);
-
+  const user=useContext(UserContext);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
@@ -184,9 +185,9 @@ const GoalsDetail: React.FC<GoalsProps> = ({
             <br />
             <IonItem lines="none">
               <IonLabel style={{fontSize:"30px"}} color="purple">Tareas</IonLabel>
-              <IonButton onClick={() => addNewActivity()} fill="clear">
+              {user.userInfo.rolId===1?<IonButton onClick={() => addNewActivity()} fill="clear">
                 <IonIcon slot="icon-only" icon={add} size="large" />
-              </IonButton>
+              </IonButton>:<></>}
             </IonItem>
             <br />
             {renderActivities}
@@ -199,13 +200,13 @@ const GoalsDetail: React.FC<GoalsProps> = ({
         />
       </IonContent>
 
-      <IonButton
+    {user.userInfo.rolId===1?  <IonButton
         onClick={() => completeGoal()}
         color="orange"
         className="normalButton"
       >
         Acreditar puntos
-      </IonButton>
+      </IonButton>:<></>}
       <IonButton
         onClick={() => SetShowModal(false)}
         color="lightblue"

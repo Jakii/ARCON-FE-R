@@ -14,6 +14,7 @@ import {
 
 import GoalsDetail from "./../GoalsDetail/GoalsDetail";
 import { UserContext } from "../../App";
+import { Animated } from "react-animated-css";
 
 type HistoryListProps = {
   Goals: any[];
@@ -22,6 +23,10 @@ type HistoryListProps = {
 const HistoryList: React.FC<HistoryListProps> = ({ Goals }) => {
   const renderHistoryGoals = Goals.map((y: any) => {
     return (
+     <Animated
+     animationIn="bounceInLeft"
+     animationOut="fadeOut"
+     isVisible={true}>
       <IonCard color="green">
         <IonCardContent>
           <IonRow>
@@ -37,6 +42,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ Goals }) => {
           </IonRow>
         </IonCardContent>
       </IonCard>
+      </Animated> 
     );
   });
 

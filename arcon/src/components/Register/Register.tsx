@@ -109,14 +109,16 @@ const Register: React.FC<RegisterProps> = ({ ShowModal, SetShowModal }) => {
       phoneNumber: phoneNumber,
       password: password,
     };
-
+    debugger;
     API.post("UserApp/Register", newUserInfo).then((res) => {
+      debugger;
       if (res.data.succeeded) {
         setToastMessage("Usuario registrado exitosamente");
         setShowToast(true);
         SetShowModal(false);
       } else {
-        setToastMessage(res.data.data[0].description);
+        debugger;
+        setToastMessage(res.data.message);
         setShowToast(true);
       }
     });

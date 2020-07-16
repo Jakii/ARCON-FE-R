@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@capacitor/core": "1.5.2",
+    "@capacitor/android": "^2.2.1",
+    "@capacitor/core": "^1.5.2",
     "@ionic-native/image-picker": "^5.26.0",
     "@ionic/react": "^5.0.0",
     "@ionic/react-router": "^5.0.0",
@@ -19,6 +20,7 @@
     "axios": "^0.19.2",
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "ionicons": "^5.0.0",
+    "jetifier": "^1.6.6",
     "react": "^16.12.0",
     "react-animated-css": "^1.2.1",
     "react-circular-progressbar": "^2.0.3",
@@ -50,7 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "1.5.2"
+    "@capacitor/cli": "^1.5.2"
   },
   "description": "An Ionic project"
 }

@@ -144,6 +144,22 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-steelblue-contrast-rgb: 0,0,0;
   --ion-color-steelblue-shade: #a1b4cf;
   --ion-color-steelblue-tint: #bed1ed;
+  
+  --ion-color-lapiz: #015F93;
+  --ion-color-lapiz-rgb: 1,95,147;
+  --ion-color-lapiz-contrast: #ffffff;
+  --ion-color-lapiz-contrast-rgb: 255,255,255;
+  --ion-color-lapiz-shade: #015481;
+  --ion-color-lapiz-tint: #1a6f9e;
+}
+
+.ion-color-lapiz {
+  --ion-color-base: var(--ion-color-lapiz);
+  --ion-color-base-rgb: var(--ion-color-lapiz-rgb);
+  --ion-color-contrast: var(--ion-color-lapiz-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-lapiz-contrast-rgb);
+  --ion-color-shade: var(--ion-color-lapiz-shade);
+  --ion-color-tint: var(--ion-color-lapiz-tint);
 }
 
 .ion-color-steelblue {

@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  IonHeader,
-  IonIcon,
   IonTitle,
   IonToolbar,
-  IonButtons,
-  IonButton,
   IonPage,
   IonContent,
-  IonToast,
-  IonCard,
   IonLabel,
   IonCardHeader,
   IonCardTitle,
@@ -19,11 +13,11 @@ import {
   IonSearchbar,
   IonList,
   IonImg,
+  IonCard
 } from "@ionic/react";
 import { UserContext } from "../App";
 import HistoryList from "../components/History/HistoryList";
 import API from "./../axios/axiosAPI.js";
-import { starOutline } from "ionicons/icons";
 import '../theme/label.css';
 
 type HistoryProps = {};
@@ -73,14 +67,14 @@ const Home: React.SFC<HistoryProps> = ({}) => {
         <IonTitle size="large" className="toolbarTitle" color="purple">Historial</IonTitle>
       </IonToolbar>
       <IonContent>
-        <IonCard color="darkblue">
+        <IonCard color="primary">
           <IonCardHeader>
             <IonCardTitle>Arcomonedas:</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
        
-           <IonItem lines="none" color="darkblue">
-             <IonImg src="../../assets/avatars/2.png" slot="start" style={{width:"60px", height:"60px"}}></IonImg>
+           <IonItem lines="none" color="primary">
+             <IonImg src="../../assets/arcomoneda.png" slot="start" style={{width:"60px", height:"60px"}}></IonImg>
            <IonLabel
               style={{
                 fontSize: "56px",
@@ -96,12 +90,22 @@ const Home: React.SFC<HistoryProps> = ({}) => {
         </IonCard>
         <br />
         <IonLabel
-          color="purple"
-          style={{ marginLeft: "15px", fontSize: "24px", fontWeight: "bolder" }}
+          color="primary"
+          className="title"
+          style={{marginLeft:"15px"}}
         >
-          Metas completadas
+          Hola {user.profileSelected.name},
         </IonLabel>
         <br />
+        <IonLabel
+          color="lapiz"
+          className="date"
+          style={{marginLeft:"15px"}}
+        >
+          estas son tus metas alcanzadas
+        </IonLabel>
+        <br/>
+        <br/>
         <IonSearchbar
           onIonChange={(e: any) => searchGoal(e.detail.value)}
           showCancelButton="never"

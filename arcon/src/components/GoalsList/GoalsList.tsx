@@ -78,7 +78,7 @@ const GoalsList: React.FC<GoalsProps> = ({ List, GetGoals }) => {
           </IonCardHeader>
           <IonItem color="transparent" lines="none">
             <IonImg
-              src={"../../assets/avatars/2.png"}
+              src={"../../assets/arcomoneda.png"}
               style={{ width: "30px", height: "30px", marginLeft: "10px" }}
             ></IonImg>
             <IonLabel className="titleGoal">{x.amount}</IonLabel>

@@ -6,16 +6,14 @@ import {
   IonLabel,
   IonInput,
   IonIcon,
-  IonItem
+  IonItem,
+  IonAvatar,
+  IonImg,
 } from "@ionic/react";
 import "../../theme/label.css";
 import "../../theme/input.css";
 import "../../theme/button.css";
-import {
-  golfOutline,
-  documentTextOutline,
-  starOutline,
-} from "ionicons/icons";
+import { golfOutline, documentTextOutline, starOutline } from "ionicons/icons";
 import { UserContext } from "../../App";
 
 type NewGoalProps = {
@@ -47,7 +45,7 @@ const NewGoal: React.FC<NewGoalProps> = ({
         <br />
         <br />
         <br />
-    
+
         <IonItem>
           <IonIcon icon={golfOutline} slot="start" />
           <IonInput
@@ -67,9 +65,9 @@ const NewGoal: React.FC<NewGoalProps> = ({
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonIcon icon={starOutline} slot="start" />
+          <IonImg src="../../assets/coin.png" style={{height:"20px", width:"20px"}} slot="start"></IonImg>
           <IonInput
-            placeholder="Puntos"
+            placeholder="Arcomonedas"
             autofocus={true}
             className="inputText"
             onIonChange={(e) => setAmount(parseFloat(e.detail.value!))}
@@ -99,7 +97,11 @@ const NewGoal: React.FC<NewGoalProps> = ({
       <IonButton onClick={() => save()} color="green" className="normalButton">
         Guardar
       </IonButton>
-      <IonButton onClick={() => SetShowModal(false)} color="lightblue" className="normalButton">
+      <IonButton
+        onClick={() => SetShowModal(false)}
+        color="lightblue"
+        className="normalButton"
+      >
         Regresar
       </IonButton>
     </IonModal>
